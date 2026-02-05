@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>MDigital by Hakim | Web & Mobile Development</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="icon" href="images/logo/favicon.png" type="image/png" sizes="16x16">
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload landing">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<h1 id="logo"><a href="/">MDigital</a></h1>
+				</header>
+
+			<!-- Banner -->
+				<section id="banner">
+					<div class="content">
+						<header>
+							<h2>MDigital</h2>
+							<p>And there are no hoverboards or flying cars.<br /> Just a software consultant. Lots of apps published.</p>
+						</header>
+						<span class="image"><img src="images/logo/logo.png" alt="" /></span>
+					</div>
+					<a href="#one" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- One -->
+				<section id="one" class="spotlight style1 bottom">
+					<span class="image fit main"><img src="images/banner1.jpg" alt="" /></span>
+					<div class="content">
+						<div class="container">
+							<div class="row">
+								<div class="col-4 col-12-medium">
+									<header>
+										<h2>Working With Us</h2>
+										<p>Why You Should Work With Us</p>
+									</header>
+								</div>
+								<div class="col-8 col-12-medium">
+									<p>We work with our clients from start to finish.
+										We help them determine the goals and purpose behind build project with us and work with them all until the project published to make sure they have the reach, impact, and return on investment that they desire. Our works are for clients who are spreading values and principles to the world to become a better place.									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<a href="#two" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- Two -->
+				<section id="two" class="spotlight style2 right">
+					<span class="image fit main"><img src="images/cleaning.jpg" alt="" /></span>
+					<div class="content">
+						<header>
+							<h2>On Demand Cleaning Service System</h2>
+							<p>The best in professional cleaning service and that quality.</p>
+						</header>
+						<p>We always strives to be the best in professional cleaning service system and that quality is one of the most important aspects that makes customers loyal to us. All our cleaners are trained to ensure they understand our strict Standard Operating Procedures. Only those pass the practical evaluation test are assigned to provide services to customers.</p>
+						<ul class="actions">
+							<li><a target="_blank" href="https://play.google.com/store/apps/details?id=com.kliknclean.android" class="button">More Detail</a></li>
+						</ul>
+					</div>
+					<a href="#three" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- Three -->
+				<section id="three" class="spotlight style3 left">
+					<span class="image fit main bottom"><img src="images/tools.jpg" alt="" /></span>
+					<div class="content">
+						<header>
+							<h2>Project Management Tools</h2>
+							<p>Smarter Project Management Tools</p>
+						</header>
+						<p>Traditional project management software expects one person to create the plan and rebuild it as priorities shift. With Our Project Management Tools, when priorities shift and resources change, you’ll instantly see updated completion dates for each task and project in your entire portfolio.</p>
+						<ul class="actions">
+							<li><a href="#" class="button">More Detail</a></li>
+						</ul>
+					</div>
+					<a href="#four" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- Four -->
+				<section id="four" class="wrapper style1 special fade-up">
+					<div class="container">
+						<header class="major">
+							<h2>WHAT WE DO</h2>
+							<p>We enable innovation. From ideation all the way through to market delivery</p>
+						</header>
+						<div class="box alt">
+							<div class="row gtr-uniform">
+								<section class="col-3 col-6-medium col-12-xsmall">
+									<span class="icon solid alt major fa-flask"></span>
+									<h3>Product</h3>
+									<p>Development</p>
+								</section>
+								<section class="col-3 col-6-medium col-12-xsmall">
+									<span class="icon solid alt major fa-mobile-alt"></span>
+									<h3>Mobile App</h3>
+									<p>Development</p>
+								</section>
+								<section class="col-3 col-6-medium col-12-xsmall">
+									<span class="icon solid alt major fa-desktop"></span>
+									<h3>Web</h3>
+									<p>Development</p>
+								</section>
+								<section class="col-3 col-6-medium col-12-xsmall">
+									<span class="icon solid alt major fa-server"></span>
+									<h3>Backend System</h3>
+									<p>Development</p>
+								</section>
+							</div>
+						</div>
+					</div>
+				</section>
+
+			<!-- Five -->
+				<section id="five" class="wrapper style2 special fade">
+					<div class="container">
+						<header>
+							<h2>Let's Work Together</h2>
+							<p>We're currently looking to work with amazing people on Incredible projects.</p>
+						</header>
+					</div>
+				</section>
+
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a target="_blank" href="https://t.me/hakimmarsudi" class="icon brands alt fa-telegram"><span class="label">LinkedIn</span></a></li>
+						<li><a href="mailto:hakimmarsudi@outlook.com" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+						<li><a target="_blank" href="https://www.linkedin.com/in/hakim-marsudi-757019b3/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; MDigital. All rights reserved.</li></li>
+					</ul>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
