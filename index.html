@@ -1,277 +1,687 @@
-<!DOCTYPE HTML>
-<!--
-	Landed by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>MDigital | Web & Mobile Development Partner</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<meta name="description" content="MDigital is a professional web & mobile development partner in Indonesia. We build impactful digital products—from ideation to launch—with a focus on results and ROI." />
-		<meta name="keywords" content="MDigital, web development, mobile app development, backend systems, product development, project management tools, Indonesia" />
-		<link rel="canonical" href="https://mdigital.biz.id/" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDigital — Web & Mobile Development Partner</title>
+    <meta name="description" content="We build digital products that work. From idea to launch, we partner with teams who care about outcomes.">
+    <meta name="keywords" content="web development, mobile apps, react, next.js, product development">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="MDigital — Web & Mobile Development Partner">
+    <meta property="og:description" content="We build digital products that work. From idea to launch.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mdigital.biz.id">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MDigital — Web & Mobile Development Partner">
+    <meta name="twitter:description" content="We build digital products that work.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0F172A;
+            --accent: #3B82F6;
+            --accent-hover: #2563EB;
+            --surface: #FFFFFF;
+            --muted: #F8FAFC;
+            --border: #E2E8F0;
+            --text: #334155;
+            --text-secondary: #64748B;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: var(--surface);
+        }
+        
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 1rem 0;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero */
+        .hero {
+            padding: 120px 1.5rem;
+            text-align: center;
+            background: linear-gradient(180deg, var(--surface) 0%, var(--muted) 100%);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--border);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        
+        /* Sections */
+        section {
+            padding: 100px 1.5rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        /* Case Studies */
+        .case-studies {
+            background: var(--surface);
+        }
+        
+        .case-card {
+            background: var(--muted);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .case-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .case-image {
+            height: 300px;
+            background: linear-gradient(135deg, #E2E8F0 0%, #CBD5E1 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        
+        .case-content {
+            padding: 2rem;
+        }
+        
+        .case-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .case-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .case-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .case-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Services */
+        .services {
+            background: var(--muted);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .service-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        
+        .service-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .service-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        
+        /* Process */
+        .process {
+            background: var(--surface);
+        }
+        
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: var(--border);
+        }
+        
+        .timeline-step {
+            text-align: center;
+            flex: 1;
+            position: relative;
+        }
+        
+        .step-dot {
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .timeline-step h4 {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+        
+        .timeline-step span {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+        
+        .process-note {
+            text-align: center;
+            margin-top: 3rem;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: var(--muted);
+        }
+        
+        .testimonial {
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+        
+        .testimonial:last-child {
+            margin-bottom: 0;
+        }
+        
+        .testimonial blockquote {
+            font-size: 1.25rem;
+            color: var(--text);
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        
+        .testimonial cite {
+            color: var(--text-secondary);
+            font-style: normal;
+            font-weight: 500;
+        }
+        
+        /* Contact */
+        .contact {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+        }
+        
+        .contact h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .contact > .container > p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+        
+        .contact .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .contact .btn-primary:hover {
+            background: var(--muted);
+        }
+        
+        .contact-email {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .contact-email:hover {
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem 1.5rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            transition: color 0.2s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                border-bottom: 1px solid var(--border);
+                gap: 1rem;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .hero {
+                padding: 80px 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 60px 1rem;
+            }
+            
+            h2 {
+                font-size: 1.75rem;
+            }
+            
+            .timeline {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .timeline::before {
+                display: none;
+            }
+            
+            .timeline-step {
+                display: flex;
+                align-items: center;
+                text-align: left;
+                gap: 1rem;
+            }
+            
+            .step-dot {
+                margin: 0;
+                flex-shrink: 0;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-links a {
+                margin: 0 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">MDigital</a>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-		<!-- Open Graph / Twitter -->
-		<meta property="og:title" content="MDigital | Web & Mobile Development Partner" />
-		<meta property="og:description" content="We build impactful web & mobile products that help businesses achieve their goals." />
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://mdigital.biz.id/" />
-		<meta property="og:image" content="https://mdigital.biz.id/images/logo/logo.png" />
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content="MDigital | Web & Mobile Development Partner" />
-		<meta name="twitter:description" content="We build impactful web & mobile products that help businesses achieve their goals." />
-		<meta name="twitter:image" content="https://mdigital.biz.id/images/logo/logo.png" />
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Web & Mobile Development Partner</h1>
+            <p>We build digital products that work. From idea to launch, we partner with teams who care about outcomes.</p>
+            <div class="cta-group">
+                <a href="mailto:hakimmarsudi@outlook.com" class="btn btn-primary">Email Us</a>
+                <a href="#case-studies" class="btn btn-secondary">View Work</a>
+            </div>
+        </div>
+    </section>
 
-		<link rel="icon" href="images/logo/favicon.png" type="image/png" sizes="16x16">
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <!-- Case Studies -->
+    <section id="case-studies" class="case-studies">
+        <div class="container">
+            <h2>Selected Work</h2>
+            
+            <div class="case-card">
+                <div class="case-image">App Preview Placeholder</div>
+                <div class="case-content">
+                    <h3>On-Demand Cleaning Service</h3>
+                    <p>Complete booking & operations platform for a service marketplace.</p>
+                    <a href="#" class="case-link">View on Play Store →</a>
+                </div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-image">Dashboard Preview Placeholder</div>
+                <div class="case-content">
+                    <h3>Project Management Tools</h3>
+                    <p>Smarter planning for fast-moving teams.</p>
+                    <a href="#" class="case-link">Request Demo →</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-		<style>
-			/* Floating WhatsApp Button */
-			.whatsapp-fab {
-				position: fixed;
-				right: 20px;
-				bottom: 20px;
-				background: #25D366;
-				color: #fff;
-				padding: 12px 16px;
-				border-radius: 999px;
-				text-decoration: none;
-				font-weight: 700;
-				box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-				z-index: 9999;
-			}
-			.whatsapp-fab:hover { opacity: 0.9; }
+    <!-- Services -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Mobile Apps</h3>
+                    <p>iOS, Android, React Native</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>Web Apps</h3>
+                    <p>React, Next.js, modern stack</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚙️</div>
+                    <h3>Backend</h3>
+                    <p>APIs, databases, cloud infra</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <h3>Product</h3>
+                    <p>Strategy to launch</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-			/* Scroll to Top Button */
-			#scrollTopBtn {
-				position: fixed;
-				right: 20px;
-				bottom: 80px;
-				background: #111;
-				color: #fff;
-				border: none;
-				padding: 10px 12px;
-				border-radius: 10px;
-				cursor: pointer;
-				display: none;
-				z-index: 9999;
-			}
-		</style>
+    <!-- Process -->
+    <section id="process" class="process">
+        <div class="container">
+            <h2>How We Work</h2>
+            <div class="timeline">
+                <div class="timeline-step">
+                    <div class="step-dot">1</div>
+                    <h4>Discovery</h4>
+                    <span>2 weeks</span>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-dot">2</div>
+                    <h4>Design</h4>
+                    <span>2 weeks</span>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-dot">3</div>
+                    <h4>Build</h4>
+                    <span>4-8 wks</span>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-dot">4</div>
+                    <h4>Launch</h4>
+                    <span>1 week</span>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-dot">5</div>
+                    <h4>Support</h4>
+                    <span>ongoing</span>
+                </div>
+            </div>
+            <p class="process-note">We work in focused sprints with clear milestones and no hidden steps.</p>
+        </div>
+    </section>
 
-		<script type="application/ld+json">
-		{
-			"@context": "https://schema.org",
-			"@type": "LocalBusiness",
-			"name": "MDigital",
-			"url": "https://mdigital.biz.id",
-			"description": "Web & mobile development partner delivering impactful digital products.",
-			"areaServed": "Indonesia",
-			"sameAs": [
-				"https://www.linkedin.com/in/hakim-marsudi-757019b3/",
-				"https://t.me/hakimmarsudi"
-			]
-		}
-		</script>
-	</head>
-	<body class="is-preload landing">
-		<div id="page-wrapper">
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Clients Say</h2>
+            
+            <div class="testimonial">
+                <blockquote>"MDigital guided us from idea to launch with clear milestones and real results."</blockquote>
+                <cite>— Service Business Owner</cite>
+            </div>
+            
+            <div class="testimonial">
+                <blockquote>"Responsive, professional, and truly invested in our success."</blockquote>
+                <cite>— Startup Founder</cite>
+            </div>
+            
+            <div class="testimonial">
+                <blockquote>"Faster launch and better UX than we expected."</blockquote>
+                <cite>— Product Manager</cite>
+            </div>
+        </div>
+    </section>
 
-			<!-- Header -->
-				<header id="header">
-					<h1 id="logo"><a href="/">MDigital</a></h1>
-				</header>
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Let's build something together.</h2>
+            <p>Tell us what you're working on.</p>
+            <div class="cta-group">
+                <a href="mailto:hakimmarsudi@outlook.com" class="btn btn-primary">Start a Project →</a>
+                <a href="mailto:hakimmarsudi@outlook.com" class="contact-email">hakimmarsudi@outlook.com</a>
+            </div>
+        </div>
+    </section>
 
-			<!-- Banner -->
-				<section id="banner">
-					<div class="content">
-						<header>
-							<h2>Transform Your Vision into Digital Success</h2>
-							<p>MDigital is your web & mobile development partner—building impactful products from ideation to launch, with a focus on results and ROI.</p>
-						</header>
-						<span class="image"><img src="images/logo/logo.png" alt="MDigital" /></span>
-					</div>
-					<a href="#one" class="goto-next scrolly">Next</a>
-				</section>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div>© 2026 MDigital</div>
+            <div class="footer-links">
+                <a href="https://t.me/hakimmarsudi" target="_blank" rel="noopener">Telegram</a>
+            </div>
+        </div>
+    </footer>
 
-			<!-- One -->
-				<section id="one" class="spotlight style1 bottom">
-					<span class="image fit main"><img src="images/banner1.jpg" alt="MDigital Teamwork" /></span>
-					<div class="content">
-						<div class="container">
-							<div class="row">
-								<div class="col-4 col-12-medium">
-									<header>
-										<h2>Working With Us</h2>
-										<p>Why you should work with MDigital</p>
-									</header>
-								</div>
-								<div class="col-8 col-12-medium">
-									<p>We partner with clients from start to finish—defining goals, building the product, and launching it with measurable impact. Our work is for businesses that care about outcomes and long‑term value.</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<a href="#two" class="goto-next scrolly">Next</a>
-				</section>
-
-			<!-- Two: Case Study -->
-				<section id="two" class="spotlight style2 right">
-					<span class="image fit main"><img src="images/cleaning.jpg" alt="On Demand Cleaning" /></span>
-					<div class="content">
-						<header>
-							<h2>On‑Demand Cleaning Service System</h2>
-							<p>Streamlined operations with a dedicated mobile platform.</p>
-						</header>
-						<p>We built a complete booking and service management system to improve efficiency and customer satisfaction, helping the business scale reliably.</p>
-						<ul class="actions">
-							<li><a target="_blank" href="https://play.google.com/store/apps/details?id=com.kliknclean.android" class="button">View App</a></li>
-						</ul>
-					</div>
-					<a href="#three" class="goto-next scrolly">Next</a>
-				</section>
-
-			<!-- Three: Case Study -->
-				<section id="three" class="spotlight style3 left">
-					<span class="image fit main bottom"><img src="images/tools.jpg" alt="Project Management Tools" /></span>
-					<div class="content">
-						<header>
-							<h2>Project Management Tools</h2>
-							<p>Smarter planning, faster execution, clearer visibility.</p>
-						</header>
-						<p>Our project management tools help teams adapt quickly to changing priorities and deliver projects on time with full portfolio visibility.</p>
-						<ul class="actions">
-							<li><a href="#contact" class="button">Request Demo</a></li>
-						</ul>
-					</div>
-					<a href="#four" class="goto-next scrolly">Next</a>
-				</section>
-
-			<!-- Four: Services -->
-				<section id="four" class="wrapper style1 special fade-up">
-					<div class="container">
-						<header class="major">
-							<h2>What We Do</h2>
-							<p>We enable innovation from ideation all the way through to market delivery.</p>
-						</header>
-						<div class="box alt">
-							<div class="row gtr-uniform">
-								<section class="col-3 col-6-medium col-12-xsmall">
-									<span class="icon solid alt major fa-flask"></span>
-									<h3>Product</h3>
-									<p>Discovery, strategy, and product development.</p>
-								</section>
-								<section class="col-3 col-6-medium col-12-xsmall">
-									<span class="icon solid alt major fa-mobile-alt"></span>
-									<h3>Mobile Apps</h3>
-									<p>iOS & Android apps that delight users.</p>
-								</section>
-								<section class="col-3 col-6-medium col-12-xsmall">
-									<span class="icon solid alt major fa-desktop"></span>
-									<h3>Web</h3>
-									<p>High‑performance websites and platforms.</p>
-								</section>
-								<section class="col-3 col-6-medium col-12-xsmall">
-									<span class="icon solid alt major fa-server"></span>
-									<h3>Backend</h3>
-									<p>Scalable APIs, databases, and integrations.</p>
-								</section>
-							</div>
-						</div>
-					</div>
-				</section>
-
-			<!-- Process -->
-				<section id="process" class="wrapper style2 special fade">
-					<div class="container">
-						<header>
-							<h2>Our Process</h2>
-							<p>Discovery → Design → Development → Deployment → Support</p>
-						</header>
-					</div>
-				</section>
-
-			<!-- Testimonials -->
-				<section id="testimonials" class="wrapper style1 special fade-up">
-					<div class="container">
-						<header class="major">
-							<h2>Client Testimonials</h2>
-							<p>Trusted by teams building mission‑driven products.</p>
-						</header>
-						<div class="box alt">
-							<div class="row gtr-uniform">
-								<section class="col-4 col-12-medium">
-									<p>“MDigital guided us from idea to launch with clear milestones and real results.”</p>
-									<strong>— Service Business Owner</strong>
-								</section>
-								<section class="col-4 col-12-medium">
-									<p>“Their team is responsive, professional, and truly invested in our success.”</p>
-									<strong>— Startup Founder</strong>
-								</section>
-								<section class="col-4 col-12-medium">
-									<p>“We achieved a faster launch and better user experience than expected.”</p>
-									<strong>— Product Manager</strong>
-								</section>
-							</div>
-						</div>
-					</div>
-				</section>
-
-			<!-- Contact -->
-				<section id="contact" class="wrapper style2 special fade">
-					<div class="container">
-						<header>
-							<h2>Let's Work Together</h2>
-							<p>Tell us about your project and we’ll get back to you.</p>
-						</header>
-						<ul class="actions">
-							<li><a href="mailto:hakimmarsudi@outlook.com" class="button primary">Email Us</a></li>
-							<li><a target="_blank" href="https://t.me/hakimmarsudi" class="button">Telegram</a></li>
-						</ul>
-					</div>
-				</section>
-
-			<!-- Footer -->
-				<footer id="footer">
-					<ul class="icons">
-						<li><a target="_blank" href="https://t.me/hakimmarsudi" class="icon brands alt fa-telegram"><span class="label">Telegram</span></a></li>
-						<li><a href="mailto:hakimmarsudi@outlook.com" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
-						<li><a target="_blank" href="https://www.linkedin.com/in/hakim-marsudi-757019b3/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-					</ul>
-					<ul class="copyright">
-						<li>&copy; MDigital. All rights reserved.</li>
-					</ul>
-				</footer>
-
-		</div>
-
-		<!-- Floating WhatsApp Button (update number if needed) -->
-		<a class="whatsapp-fab" href="https://wa.me/6280000000000" target="_blank" rel="noopener">WhatsApp</a>
-
-		<!-- Scroll to Top Button -->
-		<button id="scrollTopBtn" aria-label="Scroll to top">↑</button>
-
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.scrolly.min.js"></script>
-		<script src="assets/js/jquery.dropotron.min.js"></script>
-		<script src="assets/js/jquery.scrollex.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
-
-		<script>
-			const scrollBtn = document.getElementById("scrollTopBtn");
-			window.addEventListener("scroll", () => {
-				scrollBtn.style.display = (window.scrollY > 400) ? "block" : "none";
-			});
-			scrollBtn.addEventListener("click", () => {
-				window.scrollTo({ top: 0, behavior: "smooth" });
-			});
-		</script>
-
-	</body>
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('active');
+        }
+    </script>
+</body>
 </html>
