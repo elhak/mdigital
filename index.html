@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDigital - Web & Mobile Development Partner</title>
+    <meta name="description" content="MDigital is a web and mobile development agency that builds digital products that scale.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: '#0A0A0F',
+                        primary: '#1A1A2E',
+                        accent: '#6366F1',
+                        'accent-glow': '#818CF8',
+                        'gray-300': '#D1D5DB',
+                        'gray-500': '#6B7280',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #0A0A0F;
+            color: #ffffff;
+            font-family: 'Inter', system-ui, sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* Glass Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .glass-nav {
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .glass-nav.scrolled {
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        /* Glow Effects */
+        .glow-accent {
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+        }
+        
+        .glow-accent-hover:hover {
+            box-shadow: 0 0 40px rgba(99, 102, 241, 0.5);
+        }
+        
+        /* Card Hover Effects */
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            border-color: rgba(99, 102, 241, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(99, 102, 241, 0.2);
+        }
+        
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #ffffff 0%, #818CF8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Code Editor Mockup */
+        .code-editor {
+            background: linear-gradient(180deg, #1A1A2E 0%, #0F0F1A 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .code-line {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        /* Process Timeline */
+        .timeline-line {
+            background: linear-gradient(90deg, #6366F1 0%, #818CF8 50%, rgba(255,255,255,0.1) 100%);
+        }
+        
+        /* Button Styles */
+        .btn-primary {
+            background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Background Gradient Orb */
+        .gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        
+        /* Smooth reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #0A0A0F;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #1A1A2E;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6366F1;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Background Effects -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="gradient-orb w-96 h-96 bg-accent/20 top-0 left-1/4"></div>
+        <div class="gradient-orb w-80 h-80 bg-accent-glow/10 top-1/3 right-1/4"></div>
+        <div class="gradient-orb w-72 h-72 bg-accent/15 bottom-1/4 left-1/3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 glass-nav">
+        <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-2">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-accent-glow flex items-center justify-center">
+                        <i data-lucide="code-2" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <span class="text-xl font-bold text-white">MDigital</span>
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#services" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Services</a>
+                    <a href="#portfolio" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Work</a>
+                    <a href="#process" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Process</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Contact</a>
+                </div>
+                
+                <!-- CTA Button -->
+                <div class="hidden md:block">
+                    <a href="#contact" class="btn-primary px-5 py-2.5 rounded-lg text-sm font-semibold text-white inline-flex items-center space-x-2">
+                        <span>Start Project</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300 hover:text-white transition-colors">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu fixed inset-0 top-16 bg-bg/95 backdrop-blur-xl md:hidden z-40">
+            <div class="flex flex-col items-center justify-center h-full space-y-8">
+                <a href="#services" class="mobile-link text-2xl font-medium text-white hover:text-accent transition-colors">Services</a>
+                <a href="#portfolio" class="mobile-link text-2xl font-medium text-white hover:text-accent transition-colors">Work</a>
+                <a href="#process" class="mobile-link text-2xl font-medium text-white hover:text-accent transition-colors">Process</a>
+                <a href="#contact" class="mobile-link text-2xl font-medium text-white hover:text-accent transition-colors">Contact</a>
+                <a href="#contact" class="btn-primary px-8 py-3 rounded-lg text-lg font-semibold text-white mt-4">
+                    Start Project
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-20 z-10">
+        <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-12 py-20">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <!-- Hero Content -->
+                <div class="reveal">
+                    <!-- Badge -->
+                    <div class="inline-flex items-center space-x-2 glass px-4 py-2 rounded-full mb-6">
+                        <span class="w-2 h-2 bg-accent rounded-full animate-pulse"></span>
+                        <span class="text-sm text-gray-300 font-mono">Web & Mobile Development Partner</span>
+                    </div>
+                    
+                    <!-- Headline -->
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6">
+                        We Build <span class="gradient-text">Digital Products</span> That Scale
+                    </h1>
+                    
+                    <!-- Subheadline -->
+                    <p class="text-lg sm:text-xl text-gray-400 mb-8 max-w-xl leading-relaxed">
+                        From startups to enterprise, we craft high-performance web and mobile applications that drive growth and deliver exceptional user experiences.
+                    </p>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#portfolio" class="btn-primary px-8 py-4 rounded-xl text-base font-semibold text-white inline-flex items-center justify-center space-x-2">
+                            <span>View Our Work</span>
+                            <i data-lucide="arrow-down-right" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#contact" class="btn-secondary px-8 py-4 rounded-xl text-base font-semibold text-white inline-flex items-center justify-center space-x-2">
+                            <span>Get in Touch</span>
+                            <i data-lucide="mail" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-8 mt-12 pt-12 border-t border-white/10">
+                        <div>
+                            <div class="text-3xl sm:text-4xl font-bold text-white">50+</div>
+                            <div class="text-sm text-gray-500 mt-1">Projects Delivered</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl sm:text-4xl font-bold text-white">98%</div>
+                            <div class="text-sm text-gray-500 mt-1">Client Satisfaction</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl sm:text-4xl font-bold text-white">5+</div>
+                            <div class="text-sm text-gray-500 mt-1">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Code Editor Mockup -->
+                <div class="reveal delay-200">
+                    <div class="code-editor rounded-2xl overflow-hidden">
+                        <!-- Editor Header -->
+                        <div class="flex items-center justify-between px-4 py-3 bg-white/5 border-b border-white/10">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <div class="text-xs text-gray-500 font-mono">App.tsx</div>
+                            <div class="w-16"></div>
+                        </div>
+                        
+                        <!-- Editor Content -->
+                        <div class="p-6 space-y-3 text-sm">
+                            <div class="code-line flex">
+                                <span class="text-gray-600 w-8 select-none">1</span>
+                                <span><span class="text-purple-400">import</span> <span class="text-white">React</span> <span class="text-purple-400">from</span> <span class="text-green-400">'react'</span>;</span>
+                            </div>
+                            <div class="code-line flex">
+                                <span class="text-gray-600 w-8 select-none">2</span>
+                                <span><span class="text-purple-400">import</span> { <span class="text-white">motion</span> } <span class="text-purple-400">from</span> <span class="text-green-400">'framer-motion'</span>;</span>
+                            </div>
+                            <div class="code-line flex">
+                                <span class="text-gray-600 w-8 select-none">3</span>
+                                <span></span>
+                            </div>
+                            <div class="code-line flex">
+                                <span class="text-gray-600 w-8 select-none">4</span>
+                                <span><span class="text-purple-400">export const</span> <span class="text-yellow-400">Hero</span> = () => {</span>
+                            </div>
+                            <div class="code-line flex">
+                                <span class="text-gray-600 w-8 select-none">5</span>
+                                <span class="pl-4"><span class="text-purple-400">return</span> (</span>
+                            </div>
+                            <div class="code-line flex">
+                                <span class="text-gray-600 w-8 select-none">6</span>
+                                <span class="pl-8"><span class="text-gray-400">&lt;</span><span class="text-blue-400">motion.div</span></span>
+                            </div>
+                            <div class="code-line flex">
+                                <span class="text-gray-600 w-8 select-none">7</span>
+                                <span class="pl-12"><span class="text-cyan-400">initial</span>={{ <span class="text-white">opacity</span>: <span class="text-orange-400">0</span> }}</span>
+                            </div>
+                            <div class="code-line flex">
+                                <span class="text-gray-600 w-8 select-none">8</span>
+                                <span class="pl-12"><span class="text-cyan-400">animate</span>={{ <span class="text-white">opacity</span>: <span class="text-orange-400">1</span> }}</span>
+                            </div>
+                            <div class="code-line flex">
+                                <span class="text-gray-600 w-8 select-none">9</span>
+                                <span class="pl-12"><span class="text-cyan-400">className</span>=<span class="text-green-400">"hero-container"</span></span>
+                            </div>
+                            <div class="code-line flex">
+                                <span class="text-gray-600 w-8 select-none">10</span>
+                                <span class="pl-8"><span class="text-gray-400">&gt;</span></span>
+                            </div>
+                            <div class="code-line flex">
+                                <span class="text-gray-600 w-8 select-none">11</span>
+                                <span class="pl-12"><span class="text-gray-400">&lt;</span><span class="text-blue-400">h1</span><span class="text-gray-400">&gt;</span><span class="text-white">Digital Excellence</span><span class="text-gray-400">&lt;/</span><span class="text-blue-400">h1</span><span class="text-gray-400">&gt;</span></span>
+                            </div>
+                            <div class="code-line flex">
+                                <span class="text-gray-600 w-8 select-none">12</span>
+                                <span class="pl-8"><span class="text-gray-400">&lt;/</span><span class="text-blue-400">motion.div</span><span class="text-gray-400">&gt;</span></span>
+                            </div>
+                            <div class="code-line flex">
+                                <span class="text-gray-600 w-8 select-none">13</span>
+                                <span class="pl-4">);</span>
+                            </div>
+                            <div class="code-line flex">
+                                <span class="text-gray-600 w-8 select-none">14</span>
+                                <span>};</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="relative py-24 lg:py-32 z-10">
+        <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="inline-block text-accent font-mono text-sm mb-4">OUR SERVICES</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+                    Everything You Need to <span class="gradient-text">Build & Scale</span>
+                </h2>
+                <p class="text-gray-400 text-lg">
+                    End-to-end development services tailored to your business needs, from concept to launch and beyond.
+                </p>
+            </div>
+            
+            <!-- Bento Grid -->
+            <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                <!-- Mobile Apps -->
+                <div class="glass card-hover rounded-2xl p-8 reveal">
+                    <div class="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6">
+                        <i data-lucide="smartphone" class="w-7 h-7 text-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Mobile Apps</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Native and cross-platform mobile applications for iOS and Android. React Native, Flutter, and Swift development with pixel-perfect UI implementation.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-6">
+                        <span class="px-3 py-1 rounded-full bg-white/5 text-xs font-mono text-gray-300">React Native</span>
+                        <span class="px-3 py-1 rounded-full bg-white/5 text-xs font-mono text-gray-300">Flutter</span>
+                        <span class="px-3 py-1 rounded-full bg-white/5 text-xs font-mono text-gray-300">Swift</span>
+                    </div>
+                </div>
+                
+                <!-- Web Apps -->
+                <div class="glass card-hover rounded-2xl p-8 reveal">
+                    <div class="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6">
+                        <i data-lucide="globe" class="w-7 h-7 text-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Web Applications</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Modern, responsive web applications built with React, Next.js, and Vue. Server-side rendering, progressive web apps, and single-page applications.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-6">
+                        <span class="px-3 py-1 rounded-full bg-white/5 text-xs font-mono text-gray-300">React</span>
+                        <span class="px-3 py-1 rounded-full bg-white/5 text-xs font-mono text-gray-300">Next.js</span>
+                        <span class="px-3 py-1 rounded-full bg-white/5 text-xs font-mono text-gray-300">Vue</span>
+                    </div>
+                </div>
+                
+                <!-- Backend -->
+                <div class="glass card-hover rounded-2xl p-8 reveal">
+                    <div class="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6">
+                        <i data-lucide="server" class="w-7 h-7 text-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Backend & APIs</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Scalable backend architectures and RESTful/GraphQL APIs. Database design, cloud infrastructure, and DevOps automation for reliable deployments.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-6">
+                        <span class="px-3 py-1 rounded-full bg-white/5 text-xs font-mono text-gray-300">Node.js</span>
+                        <span class="px-3 py-1 rounded-full bg-white/5 text-xs font-mono text-gray-300">PostgreSQL</span>
+                        <span class="px-3 py-1 rounded-full bg-white/5 text-xs font-mono text-gray-300">AWS</span>
+                    </div>
+                </div>
+                
+                <!-- Product Strategy -->
+                <div class="glass card-hover rounded-2xl p-8 reveal">
+                    <div class="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6">
+                        <i data-lucide="rocket" class="w-7 h-7 text-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Product Strategy</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        From ideation to market launch. We help validate ideas, define MVPs, create roadmaps, and build products users actually want.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-6">
+                        <span class="px-3 py-1 rounded-full bg-white/5 text-xs font-mono text-gray-300">MVP Design</span>
+                        <span class="px-3 py-1 rounded-full bg-white/5 text-xs font-mono text-gray-300">UX Research</span>
+                        <span class="px-3 py-1 rounded-full bg-white/5 text-xs font-mono text-gray-300">Analytics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="relative py-24 lg:py-32 z-10">
+        <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="inline-block text-accent font-mono text-sm mb-4">OUR PROCESS</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+                    How We Bring <span class="gradient-text">Ideas to Life</span>
+                </h2>
+                <p class="text-gray-400 text-lg">
+                    A proven methodology that ensures transparent communication, timely delivery, and exceptional results.
+                </p>
+            </div>
+            
+            <!-- Process Timeline -->
+            <div class="max-w-5xl mx-auto">
+                <div class="relative">
+                    <!-- Timeline Line -->
+                    <div class="hidden lg:block absolute top-12 left-0 right-0 h-1 timeline-line rounded-full"></div>
+                    
+                    <!-- Steps -->
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <!-- Step 1: Discovery -->
+                        <div class="relative reveal">
+                            <div class="hidden lg:flex absolute top-10 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-accent border-4 border-bg z-10"></div>
+                            <div class="glass rounded-2xl p-6 text-center lg:mt-16 card-hover">
+                                <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-4">
+                                    <i data-lucide="search" class="w-6 h-6 text-accent"></i>
+                                </div>
+                                <div class="text-accent font-mono text-sm mb-2">01</div>
+                                <h3 class="text-lg font-bold text-white mb-2">Discovery</h3>
+                                <p class="text-gray-400 text-sm">
+                                    Deep dive into your goals, users, and requirements. We define success metrics and project scope.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 2: Design -->
+                        <div class="relative reveal delay-100">
+                            <div class="hidden lg:flex absolute top-10 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-accent border-4 border-bg z-10"></div>
+                            <div class="glass rounded-2xl p-6 text-center lg:mt-16 card-hover">
+                                <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-4">
+                                    <i data-lucide="palette" class="w-6 h-6 text-accent"></i>
+                                </div>
+                                <div class="text-accent font-mono text-sm mb-2">02</div>
+                                <h3 class="text-lg font-bold text-white mb-2">Design</h3>
+                                <p class="text-gray-400 text-sm">
+                                    Wireframes, prototypes, and high-fidelity designs. User testing ensures intuitive experiences.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3: Development -->
+                        <div class="relative reveal delay-200">
+                            <div class="hidden lg:flex absolute top-10 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-accent border-4 border-bg z-10"></div>
+                            <div class="glass rounded-2xl p-6 text-center lg:mt-16 card-hover">
+                                <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-4">
+                                    <i data-lucide="code" class="w-6 h-6 text-accent"></i>
+                                </div>
+                                <div class="text-accent font-mono text-sm mb-2">03</div>
+                                <h3 class="text-lg font-bold text-white mb-2">Development</h3>
+                                <p class="text-gray-400 text-sm">
+                                    Agile sprints with weekly demos. Clean code, thorough testing, and continuous integration.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 4: Launch -->
+                        <div class="relative reveal delay-300">
+                            <div class="hidden lg:flex absolute top-10 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-accent border-4 border-bg z-10"></div>
+                            <div class="glass rounded-2xl p-6 text-center lg:mt-16 card-hover">
+                                <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-4">
+                                    <i data-lucide="zap" class="w-6 h-6 text-accent"></i>
+                                </div>
+                                <div class="text-accent font-mono text-sm mb-2">04</div>
+                                <h3 class="text-lg font-bold text-white mb-2">Launch</h3>
+                                <p class="text-gray-400 text-sm">
+                                    Deployment, monitoring, and ongoing support. We ensure a smooth launch and future growth.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="relative py-24 lg:py-32 z-10">
+        <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="inline-block text-accent font-mono text-sm mb-4">OUR WORK</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+                    Featured <span class="gradient-text">Projects</span>
+                </h2>
+                <p class="text-gray-400 text-lg">
+                    A selection of our recent work across web, mobile, and backend development.
+                </p>
+            </div>
+            
+            <!-- Project Cards -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Project 1 -->
+                <div class="glass card-hover rounded-2xl overflow-hidden reveal">
+                    <div class="aspect-video bg-gradient-to-br from-accent/20 to-accent-glow/10 flex items-center justify-center">
+                        <div class="text-center">
+                            <i data-lucide="shopping-bag" class="w-16 h-16 text-accent/50 mx-auto mb-2"></i>
+                            <span class="text-gray-500 font-mono text-sm">E-Commerce Platform</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">ShopStream</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Modern e-commerce platform with real-time inventory, AI recommendations, and seamless checkout.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 rounded bg-white/5 text-xs font-mono text-gray-300">Next.js</span>
+                            <span class="px-2 py-1 rounded bg-white/5 text-xs font-mono text-gray-300">Stripe</span>
+                            <span class="px-2 py-1 rounded bg-white/5 text-xs font-mono text-gray-300">PostgreSQL</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center text-accent hover:text-accent-glow transition-colors text-sm font-medium">
+                            <span>View Project</span>
+                            <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="glass card-hover rounded-2xl overflow-hidden reveal delay-100">
+                    <div class="aspect-video bg-gradient-to-br from-green-500/10 to-emerald-500/10 flex items-center justify-center">
+                        <div class="text-center">
+                            <i data-lucide="heart-pulse" class="w-16 h-16 text-green-500/50 mx-auto mb-2"></i>
+                            <span class="text-gray-500 font-mono text-sm">Health & Fitness App</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">FitPulse</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Cross-platform fitness tracking app with workout plans, progress analytics, and social features.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 rounded bg-white/5 text-xs font-mono text-gray-300">React Native</span>
+                            <span class="px-2 py-1 rounded bg-white/5 text-xs font-mono text-gray-300">Node.js</span>
+                            <span class="px-2 py-1 rounded bg-white/5 text-xs font-mono text-gray-300">MongoDB</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center text-accent hover:text-accent-glow transition-colors text-sm font-medium">
+                            <span>View Project</span>
+                            <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="glass card-hover rounded-2xl overflow-hidden reveal delay-200">
+                    <div class="aspect-video bg-gradient-to-br from-orange-500/10 to-red-500/10 flex items-center justify-center">
+                        <div class="text-center">
+                            <i data-lucide="bar-chart-3" class="w-16 h-16 text-orange-500/50 mx-auto mb-2"></i>
+                            <span class="text-gray-500 font-mono text-sm">Analytics Dashboard</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">DataFlow</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Real-time analytics dashboard for enterprise data visualization and business intelligence.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 rounded bg-white/5 text-xs font-mono text-gray-300">Vue.js</span>
+                            <span class="px-2 py-1 rounded bg-white/5 text-xs font-mono text-gray-300">D3.js</span>
+                            <span class="px-2 py-1 rounded bg-white/5 text-xs font-mono text-gray-300">Python</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center text-accent hover:text-accent-glow transition-colors text-sm font-medium">
+                            <span>View Project</span>
+                            <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="relative py-24 lg:py-32 z-10">
+        <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="inline-block text-accent font-mono text-sm mb-4">TESTIMONIALS</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+                    What Our <span class="gradient-text">Clients Say</span>
+                </h2>
+            </div>
+            
+            <!-- Testimonial Cards -->
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Testimonial 1 -->
+                <div class="glass card-hover rounded-2xl p-8 reveal">
+                    <div class="flex items-center space-x-1 mb-6">
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-300 text-lg mb-6 leading-relaxed">
+                        "MDigital transformed our vision into reality. Their attention to detail and technical expertise exceeded our expectations. The app they built has become the cornerstone of our business."
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-accent-glow flex items-center justify-center">
+                            <span class="text-white font-bold">SK</span>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-white">Sarah Kim</div>
+                            <div class="text-sm text-gray-500">CEO, TechStart Inc.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="glass card-hover rounded-2xl p-8 reveal delay-100">
+                    <div class="flex items-center space-x-1 mb-6">
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-300 text-lg mb-6 leading-relaxed">
+                        "Working with MDigital was seamless from start to finish. They delivered on time, communicated transparently, and the quality of their work speaks for itself. Highly recommended!"
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-emerald-400 flex items-center justify-center">
+                            <span class="text-white font-bold">MR</span>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-white">Michael Rodriguez</div>
+                            <div class="text-sm text-gray-500">Founder, Healthify</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="relative py-24 lg:py-32 z-10">
+        <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
+            <div class="glass rounded-3xl p-8 sm:p-12 lg:p-16 max-w-5xl mx-auto reveal">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+                            Ready to Build Your <span class="gradient-text">Next Product?</span>
+                        </h2>
+                        <p class="text-gray-400 text-lg mb-8">
+                            Let's discuss your project and see how we can help bring your ideas to life. Free consultation, no strings attached.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="mailto:hello@mdigital.dev" class="btn-primary px-8 py-4 rounded-xl text-base font-semibold text-white inline-flex items-center justify-center space-x-2">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                                <span>hello@mdigital.dev</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Form -->
+                    <div class="glass rounded-2xl p-6 sm:p-8">
+                        <form id="contact-form" class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2">Name</label>
+                                <input type="text" placeholder="John Doe" class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-accent transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                                <input type="email" placeholder="john@example.com" class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-accent transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2">Project Details</label>
+                                <textarea rows="4" placeholder="Tell us about your project..." class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-accent transition-colors resize-none"></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary w-full px-6 py-3 rounded-lg text-base font-semibold text-white inline-flex items-center justify-center space-x-2">
+                                <span>Send Message</span>
+                                <i data-lucide="send" class="w-4 h-4"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative py-12 border-t border-white/10 z-10">
+        <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-4 gap-8 mb-12">
+                    <!-- Logo & Description -->
+                    <div class="md:col-span-2">
+                        <a href="#" class="flex items-center space-x-2 mb-4">
+                            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-accent-glow flex items-center justify-center">
+                                <i data-lucide="code-2" class="w-5 h-5 text-white"></i>
+                            </div>
+                            <span class="text-xl font-bold text-white">MDigital</span>
+                        </a>
+                        <p class="text-gray-400 text-sm max-w-sm">
+                            Web and mobile development agency building digital products that scale. We turn ideas into reality.
+                        </p>
+                    </div>
+                    
+                    <!-- Quick Links -->
+                    <div>
+                        <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#services" class="text-gray-400 hover:text-white transition-colors text-sm">Services</a></li>
+                            <li><a href="#portfolio" class="text-gray-400 hover:text-white transition-colors text-sm">Work</a></li>
+                            <li><a href="#process" class="text-gray-400 hover:text-white transition-colors text-sm">Process</a></li>
+                            <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors text-sm">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Social -->
+                    <div>
+                        <h4 class="text-white font-semibold mb-4">Connect</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all">
+                                <i data-lucide="github" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all">
+                                <i data-lucide="linkedin" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all">
+                                <i data-lucide="twitter" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all">
+                                <i data-lucide="instagram" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Copyright -->
+                <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+                    <p class="text-gray-500 text-sm">
+                        © 2026 MDigital. All rights reserved.
+                    </p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-500 hover:text-white transition-colors text-sm">Privacy Policy</a>
+                        <a href="#" class="text-gray-500 hover:text-white transition-colors text-sm">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+        
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
+        
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('open')) {
+                icon.setAttribute('data-lucide', 'x');
+            } else {
+                icon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        });
+        
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            });
+        });
+        
+        // Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        revealElements.forEach(el => revealObserver.observe(el));
+        
+        // Contact Form Handler
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Show success message
+            const button = contactForm.querySelector('button[type="submit"]');
+            const originalText = button.innerHTML;
+            button.innerHTML = '<span>Message Sent!</span>';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.disabled = false;
+                contactForm.reset();
+                lucide.createIcons();
+            }, 3000);
+        });
+        
+        // Parallax Effect for Gradient Orbs
+        const orbs = document.querySelectorAll('.gradient-orb');
+        
+        window.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            orbs.forEach((orb, index) => {
+                const speed = (index + 1) * 20;
+                const xOffset = (0.5 - x) * speed;
+                const yOffset = (0.5 - y) * speed;
+                orb.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
