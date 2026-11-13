@@ -168,6 +168,54 @@
             color: var(--on-accent);
         }
 
+        .client-name {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.125rem;
+            line-height: 1.4;
+            font-weight: 700;
+            color: var(--mist-100);
+            overflow-wrap: anywhere;
+        }
+
+        .client-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 9999px;
+            flex-shrink: 0;
+        }
+
+        .client-sub {
+            margin-top: 0.25rem;
+            font-size: 0.875rem;
+            color: var(--mist-400);
+        }
+
+        .product-shot {
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            background: var(--mid-800);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .product-shot img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 50% 0;
+        }
+
+        .btn-visit {
+            min-height: 2.75rem;
+        }
+
+        .btn-visit:focus-visible {
+            outline: 2px solid var(--cyan-400);
+            outline-offset: 3px;
+        }
+
         .btn-primary:disabled {
             opacity: 0.5;
             transform: none;
@@ -543,58 +591,45 @@
                 </p>
             </div>
             
-            <!-- Brands Grid with Styled Logos -->
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-6xl mx-auto items-center">
-                <!-- KliknClean - Blue -->
-                <div class="glass card-hover rounded-xl p-6 flex items-center justify-center h-28 reveal">
-                    <div class="text-center">
-                        <div class="font-bold text-xl" style="color: #0066CC;">KliknClean</div>
-                        <div class="text-gray-400 text-xs mt-1" data-i18n="k29">Cleaning Service</div>
+            <!-- Client names: no valid official logo files yet, so text fallback with the original brand colour as a dot -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-6xl mx-auto">
+                <div class="glass card-hover rounded-xl p-4 md:p-6 flex items-center justify-center min-h-[7rem] reveal">
+                    <div class="text-center min-w-0">
+                        <div class="client-name"><span class="client-dot" style="background: #0066CC;" aria-hidden="true"></span>KliknClean</div>
+                        <div class="client-sub" data-i18n="k29">Cleaning Service</div>
                     </div>
                 </div>
-                
-                <!-- Nabati - Red -->
-                <div class="glass card-hover rounded-xl p-6 flex items-center justify-center h-28 reveal delay-100">
-                    <div class="text-center">
-                        <div class="font-bold text-xl" style="color: #E31E24;">Nabati</div>
-                        <div class="text-gray-400 text-xs mt-1" data-i18n="k30">Food & Snacks</div>
+                <div class="glass card-hover rounded-xl p-4 md:p-6 flex items-center justify-center min-h-[7rem] reveal delay-100">
+                    <div class="text-center min-w-0">
+                        <div class="client-name"><span class="client-dot" style="background: #E31E24;" aria-hidden="true"></span>Nabati</div>
+                        <div class="client-sub" data-i18n="k30">Food & Snacks</div>
                     </div>
                 </div>
-                
-                <!-- Develio.us - Purple -->
-                <div class="glass card-hover rounded-xl p-6 flex items-center justify-center h-28 reveal delay-200">
-                    <div class="text-center">
-                        <div class="font-bold text-lg" style="color: #8B5CF6;">Develio.us</div>
-                        <div class="text-gray-400 text-xs mt-1" data-i18n="k31">Digital Solutions</div>
+                <div class="glass card-hover rounded-xl p-4 md:p-6 flex items-center justify-center min-h-[7rem] reveal delay-200">
+                    <div class="text-center min-w-0">
+                        <div class="client-name"><span class="client-dot" style="background: #8B5CF6;" aria-hidden="true"></span>Develio.us</div>
+                        <div class="client-sub" data-i18n="k31">Digital Solutions</div>
                     </div>
                 </div>
-                
-                <!-- Trimegah - Gold/Dark -->
-                <div class="glass card-hover rounded-xl p-6 flex items-center justify-center h-28 reveal delay-300">
-                    <div class="text-center">
-                        <div class="font-bold text-lg" style="color: #B8860B;">Trimegah</div>
-                        <div class="text-gray-400 text-xs mt-1" data-i18n="k32">Securities</div>
+                <div class="glass card-hover rounded-xl p-4 md:p-6 flex items-center justify-center min-h-[7rem] reveal delay-300">
+                    <div class="text-center min-w-0">
+                        <div class="client-name"><span class="client-dot" style="background: #B8860B;" aria-hidden="true"></span>Trimegah</div>
+                        <div class="client-sub" data-i18n="k32">Securities</div>
                     </div>
                 </div>
-                
-                <!-- Relaxology - Teal -->
-                <div class="glass card-hover rounded-xl p-6 flex items-center justify-center h-28 reveal delay-400">
-                    <div class="text-center">
-                        <div class="font-bold text-xl" style="color: #14B8A6;">Relaxology</div>
-                        <div class="text-gray-400 text-xs mt-1" data-i18n="k33">Family Spa</div>
+                <div class="glass card-hover rounded-xl p-4 md:p-6 flex items-center justify-center min-h-[7rem] reveal delay-400">
+                    <div class="text-center min-w-0">
+                        <div class="client-name"><span class="client-dot" style="background: #14B8A6;" aria-hidden="true"></span>Relaxology</div>
+                        <div class="client-sub" data-i18n="k33">Family Spa</div>
                     </div>
                 </div>
-                
-                <!-- Carefast - Orange -->
-                <div class="glass card-hover rounded-xl p-6 flex items-center justify-center h-28 reveal delay-500">
-                    <div class="text-center">
-                        <div class="font-bold text-xl" style="color: #F97316;">Carefast</div>
-                        <div class="text-gray-400 text-xs mt-1" data-i18n="k29">Cleaning Service</div>
+                <div class="glass card-hover rounded-xl p-4 md:p-6 flex items-center justify-center min-h-[7rem] reveal delay-500">
+                    <div class="text-center min-w-0">
+                        <div class="client-name"><span class="client-dot" style="background: #F97316;" aria-hidden="true"></span>Carefast</div>
+                        <div class="client-sub" data-i18n="k29">Cleaning Service</div>
                     </div>
                 </div>
             </div>
-            
-
         </div>
     </section>
 
@@ -614,52 +649,68 @@
 
             <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
                 <!-- AjwaHub -->
-                <div class="glass card-hover rounded-2xl p-8 reveal">
-                    <div class="flex items-center justify-between mb-6">
-                        <div class="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center">
-                            <i data-lucide="plane" class="w-7 h-7 text-accent"></i>
-                        </div>
-                        <span class="px-3 py-1 rounded-full border border-accent/30 text-xs font-mono text-accent" data-i18n="k37">Our product</span>
+                <div class="glass card-hover rounded-2xl overflow-hidden flex flex-col reveal">
+                    <div class="product-shot">
+                        <img src="assets/products/ajwahub.webp" width="1440" height="900" loading="lazy" decoding="async" alt="Screenshot of the AjwaHub website" data-i18n-alt="k-alt-ajwa" onerror="this.remove()">
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-1">AjwaHub</h3>
-                    <div class="text-sm text-gray-500 font-mono mb-3" data-i18n="k38">Umrah management platform for PPIU agencies</div>
-                    <p class="text-gray-400 leading-relaxed mb-6" data-i18n="k39">
-                        Departures, pilgrim readiness, documents, payments and credits in one workspace. A web dashboard for travel-agency staff and a mobile app for pilgrims.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
+                    <div class="p-6 md:p-8 flex flex-col flex-1">
+                        <div class="flex items-center gap-4 mb-3">
+                            <div class="w-14 h-14 shrink-0 rounded-xl bg-accent/10 flex items-center justify-center">
+                                <i data-lucide="plane" class="w-7 h-7 text-accent" aria-hidden="true"></i>
+                            </div>
+                            <div class="min-w-0">
+                                <h3 class="text-xl font-bold text-white">AjwaHub</h3>
+                                <div class="text-sm text-gray-500 font-mono" data-i18n="k38">Umrah management platform for PPIU agencies</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed mb-6" data-i18n="k39">
+                            Departures, pilgrim readiness, documents, payments and credits in one workspace. A web dashboard for travel-agency staff and a mobile app for pilgrims.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
                             <span class="px-2 py-1 rounded bg-white/5 text-xs font-mono text-gray-300">Go</span>
                             <span class="px-2 py-1 rounded bg-white/5 text-xs font-mono text-gray-300">React</span>
                             <span class="px-2 py-1 rounded bg-white/5 text-xs font-mono text-gray-300">Flutter</span>
                             <span class="px-2 py-1 rounded bg-white/5 text-xs font-mono text-gray-300">PostgreSQL</span>
+                        </div>
+                        <div class="mt-auto">
+                            <a href="https://ajwahub.my.id/" target="_blank" rel="noopener" class="btn-primary btn-visit w-full md:w-auto px-5 py-2.5 rounded-xl text-sm font-semibold text-midnight inline-flex items-center justify-center gap-2">
+                                <span data-i18n="k-visit-ajwa">Visit AjwaHub</span>
+                                <i data-lucide="arrow-up-right" class="w-4 h-4" aria-hidden="true"></i>
+                            </a>
+                        </div>
                     </div>
-                    <a href="https://ajwahub.my.id/" target="_blank" rel="noopener" class="inline-flex items-center text-accent hover:text-accent-glow transition-colors text-sm font-medium">
-                        <span>ajwahub.my.id</span>
-                        <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
-                    </a>
                 </div>
 
                 <!-- JayaPOS -->
-                <div class="glass card-hover rounded-2xl p-8 reveal delay-100">
-                    <div class="flex items-center justify-between mb-6">
-                        <div class="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center">
-                            <i data-lucide="store" class="w-7 h-7 text-accent"></i>
-                        </div>
-                        <span class="px-3 py-1 rounded-full border border-accent/30 text-xs font-mono text-accent" data-i18n="k37">Our product</span>
+                <div class="glass card-hover rounded-2xl overflow-hidden flex flex-col reveal delay-100">
+                    <div class="product-shot">
+                        <img src="assets/products/jayapos.webp" width="1440" height="900" loading="lazy" decoding="async" alt="Screenshot of the JayaPOS website" data-i18n-alt="k-alt-jaya" onerror="this.remove()">
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-1">JayaPOS</h3>
-                    <div class="text-sm text-gray-500 font-mono mb-3" data-i18n="k40">Point of sale for retail and F&amp;B</div>
-                    <p class="text-gray-400 leading-relaxed mb-6" data-i18n="k41">
-                        A complete cashier system for small and medium businesses in Indonesia, with offline mode, thermal receipt printing and multi-outlet management.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
+                    <div class="p-6 md:p-8 flex flex-col flex-1">
+                        <div class="flex items-center gap-4 mb-3">
+                            <div class="w-14 h-14 shrink-0 rounded-xl bg-accent/10 flex items-center justify-center">
+                                <i data-lucide="store" class="w-7 h-7 text-accent" aria-hidden="true"></i>
+                            </div>
+                            <div class="min-w-0">
+                                <h3 class="text-xl font-bold text-white">JayaPOS</h3>
+                                <div class="text-sm text-gray-500 font-mono" data-i18n="k40">Point of sale for retail and F&amp;B</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed mb-6" data-i18n="k41">
+                            A complete cashier system for small and medium businesses in Indonesia, with offline mode, thermal receipt printing and multi-outlet management.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
                             <span class="px-2 py-1 rounded bg-white/5 text-xs font-mono text-gray-300">Node.js</span>
                             <span class="px-2 py-1 rounded bg-white/5 text-xs font-mono text-gray-300">Flutter</span>
                             <span class="px-2 py-1 rounded bg-white/5 text-xs font-mono text-gray-300">PostgreSQL</span>
+                        </div>
+                        <div class="mt-auto">
+                            <a href="https://jayapos.biz.id/" target="_blank" rel="noopener" class="btn-primary btn-visit w-full md:w-auto px-5 py-2.5 rounded-xl text-sm font-semibold text-midnight inline-flex items-center justify-center gap-2">
+                                <span data-i18n="k-visit-jaya">Visit JayaPOS</span>
+                                <i data-lucide="arrow-up-right" class="w-4 h-4" aria-hidden="true"></i>
+                            </a>
+                        </div>
                     </div>
-                    <a href="https://jayapos.biz.id/" target="_blank" rel="noopener" class="inline-flex items-center text-accent hover:text-accent-glow transition-colors text-sm font-medium">
-                        <span>jayapos.biz.id</span>
-                        <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
-                    </a>
                 </div>
             </div>
         </div>
@@ -980,7 +1031,10 @@
             "k34": "PRODUK KAMI",
             "k35": "Produk yang Kami <span class=\"gradient-text\">Bangun &amp; Kelola</span>",
             "k36": "Perangkat lunak yang kami rancang, bangun, dan operasikan sendiri.",
-            "k37": "Produk kami",
+            "k-alt-ajwa": "Tangkapan layar situs AjwaHub",
+            "k-alt-jaya": "Tangkapan layar situs JayaPOS",
+            "k-visit-ajwa": "Kunjungi AjwaHub",
+            "k-visit-jaya": "Kunjungi JayaPOS",
             "k38": "Platform manajemen umroh untuk PPIU",
             "k39": "Keberangkatan, kesiapan jamaah, dokumen, pembayaran, dan kredit dalam satu ruang kerja. Dashboard web untuk staf travel dan aplikasi mobile untuk jamaah.",
             "k40": "Sistem kasir untuk retail dan F&amp;B",
@@ -1035,6 +1089,8 @@
         const i18nEn = new Map(i18nEls.map(el => [el, el.innerHTML]));
         const phEls = [...document.querySelectorAll('[data-i18n-ph]')];
         const phEn = new Map(phEls.map(el => [el, el.placeholder]));
+        const altEls = [...document.querySelectorAll('[data-i18n-alt]')];
+        const altEn = new Map(altEls.map(el => [el, el.alt]));
         const metaDesc = document.querySelector('meta[name="description"]');
         const ogTitle = document.querySelector('meta[property="og:title"]');
         const ogDesc = document.querySelector('meta[property="og:description"]');
@@ -1049,6 +1105,7 @@
             document.documentElement.lang = currentLang;
             i18nEls.forEach(el => { el.innerHTML = id ? I18N_ID[el.dataset.i18n] : i18nEn.get(el); });
             phEls.forEach(el => { el.placeholder = id ? I18N_ID[el.dataset.i18nPh] : phEn.get(el); });
+            altEls.forEach(el => { el.alt = id ? I18N_ID[el.dataset.i18nAlt] : altEn.get(el); });
             document.title = id ? decode(I18N_ID.meta_title) : metaEn.title;
             metaDesc.content = id ? I18N_ID.meta_desc : metaEn.desc;
             ogTitle.content = document.title;
