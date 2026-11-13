@@ -975,7 +975,7 @@
             "k24": "Strategi Produk",
             "k25": "Dari ide hingga peluncuran ke pasar. Kami membantu memvalidasi ide, menentukan MVP, menyusun roadmap, dan membangun produk yang benar-benar dibutuhkan pengguna.",
             "k26": "DIPERCAYA OLEH",
-            "k27": "Brand yang <span class=\"gradient-text\">Mempercayai Kami</span>",
+            "k27": "Brand yang <span class=\"gradient-text\">Memercayai Kami</span>",
             "k28": "Kami berkesempatan bekerja sama dengan brand-brand hebat dari berbagai industri.",
             "k29": "Layanan Kebersihan",
             "k30": "Makanan &amp; Camilan",
@@ -1041,6 +1041,8 @@
         const phEls = [...document.querySelectorAll('[data-i18n-ph]')];
         const phEn = new Map(phEls.map(el => [el, el.placeholder]));
         const metaDesc = document.querySelector('meta[name="description"]');
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        const ogDesc = document.querySelector('meta[property="og:description"]');
         const metaEn = { title: document.title, desc: metaDesc.content };
         let currentLang = 'en';
         const t = key => currentLang === 'id' ? I18N_ID[key] : I18N_EN_JS[key];
@@ -1054,6 +1056,8 @@
             phEls.forEach(el => { el.placeholder = id ? I18N_ID[el.dataset.i18nPh] : phEn.get(el); });
             document.title = id ? decode(I18N_ID.meta_title) : metaEn.title;
             metaDesc.content = id ? I18N_ID.meta_desc : metaEn.desc;
+            ogTitle.content = document.title;
+            ogDesc.content = metaDesc.content;
             document.querySelectorAll('.lang-switch button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === currentLang));
             const btn = document.getElementById('mobile-menu-btn');
             btn.setAttribute('aria-label', t(btn.getAttribute('aria-expanded') === 'true' ? 'menu_close' : 'menu_open'));
