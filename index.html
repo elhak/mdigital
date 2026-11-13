@@ -146,6 +146,28 @@
             box-shadow: 0 10px 30px var(--glow);
         }
 
+        .lang-switch {
+            display: inline-flex;
+            border: 1px solid var(--border-strong);
+            border-radius: var(--radius-sm);
+            padding: 2px;
+        }
+
+        .lang-switch button {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem;
+            color: var(--text-muted);
+            transition: all 0.2s ease;
+        }
+
+        .lang-switch button[aria-pressed="true"] {
+            background: var(--accent);
+            color: var(--on-accent);
+        }
+
         .btn-primary:disabled {
             opacity: 0.5;
             transform: none;
@@ -248,17 +270,24 @@
                 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#services" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Services</a>
-                    <a href="#trusted" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Clients</a>
-                    <a href="#products" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Products</a>
-                    <a href="#process" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Process</a>
-                    <a href="#contact" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Contact</a>
+                    <a href="#services" class="text-gray-300 hover:text-white transition-colors text-sm font-medium" data-i18n="k0">Services</a>
+                    <a href="#trusted" class="text-gray-300 hover:text-white transition-colors text-sm font-medium" data-i18n="k1">Clients</a>
+                    <a href="#products" class="text-gray-300 hover:text-white transition-colors text-sm font-medium" data-i18n="k2">Products</a>
+                    <a href="#process" class="text-gray-300 hover:text-white transition-colors text-sm font-medium" data-i18n="k3">Process</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white transition-colors text-sm font-medium" data-i18n="k4">Contact</a>
                 </div>
                 
+                <div class="flex items-center gap-3">
+                <!-- Language Switch -->
+                <div class="lang-switch" role="group" aria-label="Language">
+                    <button type="button" data-lang="id" aria-pressed="false">ID</button>
+                    <button type="button" data-lang="en" aria-pressed="true">EN</button>
+                </div>
+
                 <!-- CTA Button -->
-                <div class="hidden md:block">
+                <div class="hidden lg:block">
                     <a href="#contact" class="btn-primary px-5 py-2.5 rounded-lg text-sm font-semibold text-midnight inline-flex items-center space-x-2">
-                        <span>Start Project</span>
+                        <span data-i18n="k5">Start Project</span>
                         <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
                 </div>
@@ -267,18 +296,19 @@
                 <button id="mobile-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden p-2 text-gray-300 hover:text-white transition-colors">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
+                </div>
             </div>
         </div>
         
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="mobile-menu fixed inset-0 top-16 bg-bg/95 backdrop-blur-xl md:hidden z-40">
             <div class="flex flex-col items-center justify-center h-full space-y-8">
-                <a href="#services" class="mobile-link text-2xl font-medium text-white hover:text-accent transition-colors">Services</a>
-                <a href="#trusted" class="mobile-link text-2xl font-medium text-white hover:text-accent transition-colors">Clients</a>
-                <a href="#products" class="mobile-link text-2xl font-medium text-white hover:text-accent transition-colors">Products</a>
-                <a href="#process" class="mobile-link text-2xl font-medium text-white hover:text-accent transition-colors">Process</a>
-                <a href="#contact" class="mobile-link text-2xl font-medium text-white hover:text-accent transition-colors">Contact</a>
-                <a href="#contact" class="btn-primary px-8 py-3 rounded-lg text-lg font-semibold text-midnight mt-4">
+                <a href="#services" class="mobile-link text-2xl font-medium text-white hover:text-accent transition-colors" data-i18n="k0">Services</a>
+                <a href="#trusted" class="mobile-link text-2xl font-medium text-white hover:text-accent transition-colors" data-i18n="k1">Clients</a>
+                <a href="#products" class="mobile-link text-2xl font-medium text-white hover:text-accent transition-colors" data-i18n="k2">Products</a>
+                <a href="#process" class="mobile-link text-2xl font-medium text-white hover:text-accent transition-colors" data-i18n="k3">Process</a>
+                <a href="#contact" class="mobile-link text-2xl font-medium text-white hover:text-accent transition-colors" data-i18n="k4">Contact</a>
+                <a href="#contact" class="btn-primary px-8 py-3 rounded-lg text-lg font-semibold text-midnight mt-4" data-i18n="k5">
                     Start Project
                 </a>
             </div>
@@ -294,32 +324,32 @@
                     <!-- Badge -->
                     <div class="inline-flex items-center space-x-2 glass px-4 py-2 rounded-full mb-6">
                         <span class="w-2 h-2 bg-accent rounded-full animate-pulse"></span>
-                        <span class="text-sm text-gray-300 font-mono">Web & Mobile Development Partner</span>
+                        <span class="text-sm text-gray-300 font-mono" data-i18n="k6">Web & Mobile Development Partner</span>
                     </div>
                     
                     <!-- Headline -->
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6" data-i18n="k7">
                         We Build <span class="gradient-text">Digital Products</span> That Scale
                     </h1>
                     
                     <!-- Tagline -->
-                    <p class="text-accent font-medium text-lg mb-4 tracking-wide">
+                    <p class="text-accent font-medium text-lg mb-4 tracking-wide" data-i18n="k8">
                         Innovation for smarter future, our solutions drive progress
                     </p>
                     
                     <!-- Subheadline -->
-                    <p class="text-lg sm:text-xl text-gray-400 mb-8 max-w-xl leading-relaxed">
+                    <p class="text-lg sm:text-xl text-gray-400 mb-8 max-w-xl leading-relaxed" data-i18n="k9">
                         From startups to enterprise, we craft high-performance web and mobile applications that drive growth and deliver exceptional user experiences.
                     </p>
                     
                     <!-- CTA Buttons -->
                     <div class="flex flex-col sm:flex-row gap-4">
                         <a href="#trusted" class="btn-primary px-8 py-4 rounded-xl text-base font-semibold text-midnight inline-flex items-center justify-center space-x-2">
-                            <span>Our Clients</span>
+                            <span data-i18n="k10">Our Clients</span>
                             <i data-lucide="arrow-down-right" class="w-5 h-5"></i>
                         </a>
                         <a href="#contact" class="btn-secondary px-8 py-4 rounded-xl text-base font-semibold text-white inline-flex items-center justify-center space-x-2">
-                            <span>Get in Touch</span>
+                            <span data-i18n="k11">Get in Touch</span>
                             <i data-lucide="mail" class="w-5 h-5"></i>
                         </a>
                     </div>
@@ -328,15 +358,15 @@
                     <div class="grid grid-cols-3 gap-8 mt-12 pt-12 border-t border-white/10">
                         <div>
                             <div class="text-3xl sm:text-4xl font-bold text-white">50+</div>
-                            <div class="text-sm text-gray-500 mt-1">Projects Delivered</div>
+                            <div class="text-sm text-gray-500 mt-1" data-i18n="k12">Projects Delivered</div>
                         </div>
                         <div>
                             <div class="text-3xl sm:text-4xl font-bold text-white">98%</div>
-                            <div class="text-sm text-gray-500 mt-1">Client Satisfaction</div>
+                            <div class="text-sm text-gray-500 mt-1" data-i18n="k13">Client Satisfaction</div>
                         </div>
                         <div>
                             <div class="text-3xl sm:text-4xl font-bold text-white">5+</div>
-                            <div class="text-sm text-gray-500 mt-1">Years Experience</div>
+                            <div class="text-sm text-gray-500 mt-1" data-i18n="k14">Years Experience</div>
                         </div>
                     </div>
                 </div>
@@ -425,11 +455,11 @@
         <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
             <!-- Section Header -->
             <div class="text-center max-w-3xl mx-auto mb-16 reveal">
-                <span class="inline-block text-accent font-mono text-sm mb-4">OUR SERVICES</span>
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+                <span class="inline-block text-accent font-mono text-sm mb-4" data-i18n="k15">OUR SERVICES</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6" data-i18n="k16">
                     Everything You Need to <span class="gradient-text">Build & Scale</span>
                 </h2>
-                <p class="text-gray-400 text-lg">
+                <p class="text-gray-400 text-lg" data-i18n="k17">
                     End-to-end development services tailored to your business needs, from concept to launch and beyond.
                 </p>
             </div>
@@ -441,8 +471,8 @@
                     <div class="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6">
                         <i data-lucide="smartphone" class="w-7 h-7 text-accent"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Mobile Apps</h3>
-                    <p class="text-gray-400 leading-relaxed">
+                    <h3 class="text-xl font-bold text-white mb-3" data-i18n="k18">Mobile Apps</h3>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="k19">
                         Native and cross-platform mobile applications for iOS and Android. React Native, Flutter, and Swift development with pixel-perfect UI implementation.
                     </p>
                     <div class="flex flex-wrap gap-2 mt-6">
@@ -457,8 +487,8 @@
                     <div class="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6">
                         <i data-lucide="globe" class="w-7 h-7 text-accent"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Web Applications</h3>
-                    <p class="text-gray-400 leading-relaxed">
+                    <h3 class="text-xl font-bold text-white mb-3" data-i18n="k20">Web Applications</h3>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="k21">
                         Modern, responsive web applications built with React, Next.js, and Vue. Server-side rendering, progressive web apps, and single-page applications.
                     </p>
                     <div class="flex flex-wrap gap-2 mt-6">
@@ -473,8 +503,8 @@
                     <div class="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6">
                         <i data-lucide="server" class="w-7 h-7 text-accent"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Backend & APIs</h3>
-                    <p class="text-gray-400 leading-relaxed">
+                    <h3 class="text-xl font-bold text-white mb-3" data-i18n="k22">Backend & APIs</h3>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="k23">
                         Scalable backend architectures and RESTful/GraphQL APIs. Database design, cloud infrastructure, and DevOps automation for reliable deployments.
                     </p>
                     <div class="flex flex-wrap gap-2 mt-6">
@@ -489,8 +519,8 @@
                     <div class="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6">
                         <i data-lucide="rocket" class="w-7 h-7 text-accent"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Product Strategy</h3>
-                    <p class="text-gray-400 leading-relaxed">
+                    <h3 class="text-xl font-bold text-white mb-3" data-i18n="k24">Product Strategy</h3>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="k25">
                         From ideation to market launch. We help validate ideas, define MVPs, create roadmaps, and build products users actually want.
                     </p>
                     <div class="flex flex-wrap gap-2 mt-6">
@@ -508,11 +538,11 @@
         <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
             <!-- Section Header -->
             <div class="text-center max-w-3xl mx-auto mb-16 reveal">
-                <span class="inline-block text-accent font-mono text-sm mb-4">TRUSTED BY</span>
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+                <span class="inline-block text-accent font-mono text-sm mb-4" data-i18n="k26">TRUSTED BY</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6" data-i18n="k27">
                     Brands That <span class="gradient-text">Trust Us</span>
                 </h2>
-                <p class="text-gray-400 text-lg">
+                <p class="text-gray-400 text-lg" data-i18n="k28">
                     We've had the privilege of working with amazing brands across various industries.
                 </p>
             </div>
@@ -523,7 +553,7 @@
                 <div class="glass card-hover rounded-xl p-6 flex items-center justify-center h-28 reveal">
                     <div class="text-center">
                         <div class="font-bold text-xl" style="color: #0066CC;">KliknClean</div>
-                        <div class="text-gray-400 text-xs mt-1">Cleaning Service</div>
+                        <div class="text-gray-400 text-xs mt-1" data-i18n="k29">Cleaning Service</div>
                     </div>
                 </div>
                 
@@ -531,7 +561,7 @@
                 <div class="glass card-hover rounded-xl p-6 flex items-center justify-center h-28 reveal delay-100">
                     <div class="text-center">
                         <div class="font-bold text-xl" style="color: #E31E24;">Nabati</div>
-                        <div class="text-gray-400 text-xs mt-1">Food & Snacks</div>
+                        <div class="text-gray-400 text-xs mt-1" data-i18n="k30">Food & Snacks</div>
                     </div>
                 </div>
                 
@@ -539,7 +569,7 @@
                 <div class="glass card-hover rounded-xl p-6 flex items-center justify-center h-28 reveal delay-200">
                     <div class="text-center">
                         <div class="font-bold text-lg" style="color: #8B5CF6;">Develio.us</div>
-                        <div class="text-gray-400 text-xs mt-1">Digital Solutions</div>
+                        <div class="text-gray-400 text-xs mt-1" data-i18n="k31">Digital Solutions</div>
                     </div>
                 </div>
                 
@@ -547,7 +577,7 @@
                 <div class="glass card-hover rounded-xl p-6 flex items-center justify-center h-28 reveal delay-300">
                     <div class="text-center">
                         <div class="font-bold text-lg" style="color: #B8860B;">Trimegah</div>
-                        <div class="text-gray-400 text-xs mt-1">Securities</div>
+                        <div class="text-gray-400 text-xs mt-1" data-i18n="k32">Securities</div>
                     </div>
                 </div>
                 
@@ -555,7 +585,7 @@
                 <div class="glass card-hover rounded-xl p-6 flex items-center justify-center h-28 reveal delay-400">
                     <div class="text-center">
                         <div class="font-bold text-xl" style="color: #14B8A6;">Relaxology</div>
-                        <div class="text-gray-400 text-xs mt-1">Family Spa</div>
+                        <div class="text-gray-400 text-xs mt-1" data-i18n="k33">Family Spa</div>
                     </div>
                 </div>
                 
@@ -563,7 +593,7 @@
                 <div class="glass card-hover rounded-xl p-6 flex items-center justify-center h-28 reveal delay-500">
                     <div class="text-center">
                         <div class="font-bold text-xl" style="color: #F97316;">Carefast</div>
-                        <div class="text-gray-400 text-xs mt-1">Cleaning Service</div>
+                        <div class="text-gray-400 text-xs mt-1" data-i18n="k29">Cleaning Service</div>
                     </div>
                 </div>
             </div>
@@ -577,11 +607,11 @@
         <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
             <!-- Section Header -->
             <div class="text-center max-w-3xl mx-auto mb-16 reveal">
-                <span class="inline-block text-accent font-mono text-sm mb-4">OUR PRODUCTS</span>
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+                <span class="inline-block text-accent font-mono text-sm mb-4" data-i18n="k34">OUR PRODUCTS</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6" data-i18n="k35">
                     Products We <span class="gradient-text">Build & Run</span>
                 </h2>
-                <p class="text-gray-400 text-lg">
+                <p class="text-gray-400 text-lg" data-i18n="k36">
                     Software we design, build and operate ourselves.
                 </p>
             </div>
@@ -593,11 +623,11 @@
                         <div class="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center">
                             <i data-lucide="plane" class="w-7 h-7 text-accent"></i>
                         </div>
-                        <span class="px-3 py-1 rounded-full border border-accent/30 text-xs font-mono text-accent">Our product</span>
+                        <span class="px-3 py-1 rounded-full border border-accent/30 text-xs font-mono text-accent" data-i18n="k37">Our product</span>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-1">AjwaHub</h3>
-                    <div class="text-sm text-gray-500 font-mono mb-3">Umrah management platform for PPIU agencies</div>
-                    <p class="text-gray-400 leading-relaxed mb-6">
+                    <div class="text-sm text-gray-500 font-mono mb-3" data-i18n="k38">Umrah management platform for PPIU agencies</div>
+                    <p class="text-gray-400 leading-relaxed mb-6" data-i18n="k39">
                         Departures, pilgrim readiness, documents, payments and credits in one workspace. A web dashboard for travel-agency staff and a mobile app for pilgrims.
                     </p>
                     <div class="flex flex-wrap gap-2 mb-6">
@@ -618,11 +648,11 @@
                         <div class="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center">
                             <i data-lucide="store" class="w-7 h-7 text-accent"></i>
                         </div>
-                        <span class="px-3 py-1 rounded-full border border-accent/30 text-xs font-mono text-accent">Our product</span>
+                        <span class="px-3 py-1 rounded-full border border-accent/30 text-xs font-mono text-accent" data-i18n="k37">Our product</span>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-1">JayaPOS</h3>
-                    <div class="text-sm text-gray-500 font-mono mb-3">Point of sale for retail and F&amp;B</div>
-                    <p class="text-gray-400 leading-relaxed mb-6">
+                    <div class="text-sm text-gray-500 font-mono mb-3" data-i18n="k40">Point of sale for retail and F&amp;B</div>
+                    <p class="text-gray-400 leading-relaxed mb-6" data-i18n="k41">
                         A complete cashier system for small and medium businesses in Indonesia, with offline mode, thermal receipt printing and multi-outlet management.
                     </p>
                     <div class="flex flex-wrap gap-2 mb-6">
@@ -644,11 +674,11 @@
         <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
             <!-- Section Header -->
             <div class="text-center max-w-3xl mx-auto mb-16 reveal">
-                <span class="inline-block text-accent font-mono text-sm mb-4">OUR PROCESS</span>
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+                <span class="inline-block text-accent font-mono text-sm mb-4" data-i18n="k42">OUR PROCESS</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6" data-i18n="k43">
                     How We Bring <span class="gradient-text">Ideas to Life</span>
                 </h2>
-                <p class="text-gray-400 text-lg">
+                <p class="text-gray-400 text-lg" data-i18n="k44">
                     A proven methodology that ensures transparent communication, timely delivery, and exceptional results.
                 </p>
             </div>
@@ -669,8 +699,8 @@
                                     <i data-lucide="search" class="w-6 h-6 text-accent"></i>
                                 </div>
                                 <div class="text-accent font-mono text-sm mb-2">01</div>
-                                <h3 class="text-lg font-bold text-white mb-2">Discovery</h3>
-                                <p class="text-gray-400 text-sm">
+                                <h3 class="text-lg font-bold text-white mb-2" data-i18n="k45">Discovery</h3>
+                                <p class="text-gray-400 text-sm" data-i18n="k49">
                                     Deep dive into your goals, users, and requirements. We define success metrics and project scope.
                                 </p>
                             </div>
@@ -684,8 +714,8 @@
                                     <i data-lucide="palette" class="w-6 h-6 text-accent"></i>
                                 </div>
                                 <div class="text-accent font-mono text-sm mb-2">02</div>
-                                <h3 class="text-lg font-bold text-white mb-2">Design</h3>
-                                <p class="text-gray-400 text-sm">
+                                <h3 class="text-lg font-bold text-white mb-2" data-i18n="k46">Design</h3>
+                                <p class="text-gray-400 text-sm" data-i18n="k50">
                                     Wireframes, prototypes, and high-fidelity designs. User testing ensures intuitive experiences.
                                 </p>
                             </div>
@@ -699,8 +729,8 @@
                                     <i data-lucide="code" class="w-6 h-6 text-accent"></i>
                                 </div>
                                 <div class="text-accent font-mono text-sm mb-2">03</div>
-                                <h3 class="text-lg font-bold text-white mb-2">Development</h3>
-                                <p class="text-gray-400 text-sm">
+                                <h3 class="text-lg font-bold text-white mb-2" data-i18n="k47">Development</h3>
+                                <p class="text-gray-400 text-sm" data-i18n="k51">
                                     Agile sprints with weekly demos. Clean code, thorough testing, and continuous integration.
                                 </p>
                             </div>
@@ -714,8 +744,8 @@
                                     <i data-lucide="zap" class="w-6 h-6 text-accent"></i>
                                 </div>
                                 <div class="text-accent font-mono text-sm mb-2">04</div>
-                                <h3 class="text-lg font-bold text-white mb-2">Launch</h3>
-                                <p class="text-gray-400 text-sm">
+                                <h3 class="text-lg font-bold text-white mb-2" data-i18n="k48">Launch</h3>
+                                <p class="text-gray-400 text-sm" data-i18n="k52">
                                     Deployment, monitoring, and ongoing support. We ensure a smooth launch and future growth.
                                 </p>
                             </div>
@@ -726,16 +756,94 @@
         </div>
     </section>
 
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="relative py-24 lg:py-32 z-10">
+        <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="inline-block text-accent font-mono text-sm mb-4" data-i18n="k53">TESTIMONIALS</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6" data-i18n="k54">
+                    What Our <span class="gradient-text">Clients Say</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                <figure class="glass card-hover rounded-2xl p-8 flex flex-col reveal">
+                    <i data-lucide="quote" class="w-8 h-8 text-accent mb-6" aria-hidden="true"></i>
+                    <blockquote class="text-gray-300 text-lg leading-relaxed mb-8 flex-1">
+                        <p data-i18n="t1_quote">MDigital built our customer apps for iOS and Android, the cleaner app and the API behind them. Bookings, payments and in-app chat now run in one system, and the team keeps supporting us as we add new services.</p>
+                    </blockquote>
+                    <figcaption class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
+                            <i data-lucide="sparkles" class="w-6 h-6 text-accent" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-white">KliknClean</div>
+                            <div class="text-sm text-gray-500" data-i18n="t1_cat">Cleaning service app</div>
+                        </div>
+                    </figcaption>
+                </figure>
+
+                <figure class="glass card-hover rounded-2xl p-8 flex flex-col reveal delay-100">
+                    <i data-lucide="quote" class="w-8 h-8 text-accent mb-6" aria-hidden="true"></i>
+                    <blockquote class="text-gray-300 text-lg leading-relaxed mb-8 flex-1">
+                        <p data-i18n="t2_quote">From the first designs to the store release, every step was clear. Separate staging builds let us test each release before it reached our customers. Tidy work and honest communication throughout.</p>
+                    </blockquote>
+                    <figcaption class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
+                            <i data-lucide="flower-2" class="w-6 h-6 text-accent" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-white">Relaxology</div>
+                            <div class="text-sm text-gray-500" data-i18n="t2_cat">Family spa app</div>
+                        </div>
+                    </figcaption>
+                </figure>
+
+                <figure class="glass card-hover rounded-2xl p-8 flex flex-col reveal">
+                    <i data-lucide="quote" class="w-8 h-8 text-accent mb-6" aria-hidden="true"></i>
+                    <blockquote class="text-gray-300 text-lg leading-relaxed mb-8 flex-1">
+                        <p data-i18n="t3_quote">Fast, structured and easy to work with. The team understood what we needed quickly and delivered on schedule.</p>
+                    </blockquote>
+                    <figcaption class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
+                            <i data-lucide="cookie" class="w-6 h-6 text-accent" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-white">Nabati</div>
+                            <div class="text-sm text-gray-500" data-i18n="t3_cat" data-i18n="k30">Food &amp; Snacks</div>
+                        </div>
+                    </figcaption>
+                </figure>
+
+                <figure class="glass card-hover rounded-2xl p-8 flex flex-col reveal delay-100">
+                    <i data-lucide="quote" class="w-8 h-8 text-accent mb-6" aria-hidden="true"></i>
+                    <blockquote class="text-gray-300 text-lg leading-relaxed mb-8 flex-1">
+                        <p data-i18n="t4_quote">They turned our day-to-day operations into a simple digital flow for our team and our customers, and they respond quickly whenever we need changes.</p>
+                    </blockquote>
+                    <figcaption class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
+                            <i data-lucide="spray-can" class="w-6 h-6 text-accent" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-white">Carefast</div>
+                            <div class="text-sm text-gray-500" data-i18n="t4_cat">Cleaning service</div>
+                        </div>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section id="contact" class="relative py-24 lg:py-32 z-10">
         <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
             <div class="glass rounded-3xl p-8 sm:p-12 lg:p-16 max-w-5xl mx-auto reveal">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                     <div>
-                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6" data-i18n="k55">
                             Ready to Build Your <span class="gradient-text">Next Product?</span>
                         </h2>
-                        <p class="text-gray-400 text-lg mb-8">
+                        <p class="text-gray-400 text-lg mb-8" data-i18n="k56">
                             Let's discuss your project and see how we can help bring your ideas to life. Free consultation, no strings attached.
                         </p>
                         <div class="flex flex-col sm:flex-row gap-4">
@@ -750,19 +858,19 @@
                     <div class="glass rounded-2xl p-6 sm:p-8">
                         <form id="contact-form" class="space-y-4">
                             <div>
-                                <label class="block text-sm font-medium text-gray-300 mb-2">Name</label>
-                                <input type="text" placeholder="John Doe" class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-accent transition-colors">
+                                <label class="block text-sm font-medium text-gray-300 mb-2" data-i18n="k57">Name</label>
+                                <input type="text" placeholder="John Doe" data-i18n-ph="ph_name" class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-accent transition-colors">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-300 mb-2">Email</label>
-                                <input type="email" placeholder="john@example.com" class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-accent transition-colors">
+                                <input type="email" placeholder="john@example.com" data-i18n-ph="ph_email" class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-accent transition-colors">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-300 mb-2">Project Details</label>
-                                <textarea rows="4" placeholder="Tell us about your project..." class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-accent transition-colors resize-none"></textarea>
+                                <label class="block text-sm font-medium text-gray-300 mb-2" data-i18n="k58">Project Details</label>
+                                <textarea rows="4" placeholder="Tell us about your project..." data-i18n-ph="ph_details" class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-accent transition-colors resize-none"></textarea>
                             </div>
                             <button type="submit" class="btn-primary w-full px-6 py-3 rounded-lg text-base font-semibold text-midnight inline-flex items-center justify-center space-x-2">
-                                <span>Send Message</span>
+                                <span data-i18n="k59">Send Message</span>
                                 <i data-lucide="send" class="w-4 h-4"></i>
                             </button>
                         </form>
@@ -782,26 +890,26 @@
                         <a href="#" class="inline-flex items-center mb-4" aria-label="MDigital home">
                             <img src="design/brand/svg/logo-horizontal-for-dark-bg.svg" alt="MDigital" class="h-8 w-auto">
                         </a>
-                        <p class="text-gray-400 text-sm max-w-sm">
+                        <p class="text-gray-400 text-sm max-w-sm" data-i18n="k60">
                             Web and mobile development agency building digital products that scale. We turn ideas into reality.
                         </p>
                     </div>
                     
                     <!-- Quick Links -->
                     <div>
-                        <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                        <h4 class="text-white font-semibold mb-4" data-i18n="k61">Quick Links</h4>
                         <ul class="space-y-2">
-                            <li><a href="#services" class="text-gray-400 hover:text-white transition-colors text-sm">Services</a></li>
-                            <li><a href="#trusted" class="text-gray-400 hover:text-white transition-colors text-sm">Clients</a></li>
-                            <li><a href="#products" class="text-gray-400 hover:text-white transition-colors text-sm">Products</a></li>
-                            <li><a href="#process" class="text-gray-400 hover:text-white transition-colors text-sm">Process</a></li>
-                            <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors text-sm">Contact</a></li>
+                            <li><a href="#services" class="text-gray-400 hover:text-white transition-colors text-sm" data-i18n="k0">Services</a></li>
+                            <li><a href="#trusted" class="text-gray-400 hover:text-white transition-colors text-sm" data-i18n="k1">Clients</a></li>
+                            <li><a href="#products" class="text-gray-400 hover:text-white transition-colors text-sm" data-i18n="k2">Products</a></li>
+                            <li><a href="#process" class="text-gray-400 hover:text-white transition-colors text-sm" data-i18n="k3">Process</a></li>
+                            <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors text-sm" data-i18n="k4">Contact</a></li>
                         </ul>
                     </div>
                     
                     <!-- Social -->
                     <div>
-                        <h4 class="text-white font-semibold mb-4">Connect</h4>
+                        <h4 class="text-white font-semibold mb-4" data-i18n="k62">Connect</h4>
                         <div class="flex space-x-4">
                             <a href="#" class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all">
                                 <i data-lucide="github" class="w-5 h-5"></i>
@@ -821,12 +929,12 @@
                 
                 <!-- Copyright -->
                 <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-                    <p class="text-gray-500 text-sm">
+                    <p class="text-gray-500 text-sm" data-i18n="k63">
                         © 2026 MDigital. All rights reserved.
                     </p>
                     <div class="flex space-x-6">
-                        <a href="#" class="text-gray-500 hover:text-white transition-colors text-sm">Privacy Policy</a>
-                        <a href="#" class="text-gray-500 hover:text-white transition-colors text-sm">Terms of Service</a>
+                        <a href="#" class="text-gray-500 hover:text-white transition-colors text-sm" data-i18n="k64">Privacy Policy</a>
+                        <a href="#" class="text-gray-500 hover:text-white transition-colors text-sm" data-i18n="k65">Terms of Service</a>
                     </div>
                 </div>
             </div>
@@ -837,6 +945,125 @@
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
+
+        // Language: English is the markup default, Indonesian strings live here
+        const I18N_ID = {
+            "k0": "Layanan",
+            "k1": "Klien",
+            "k2": "Produk",
+            "k3": "Proses",
+            "k4": "Kontak",
+            "k5": "Mulai Proyek",
+            "k6": "Mitra Pengembangan Web &amp; Mobile",
+            "k7": "Kami Membangun <span class=\"gradient-text\">Produk Digital</span> yang Siap Berkembang",
+            "k8": "Inovasi untuk masa depan yang lebih cerdas, solusi kami mendorong kemajuan",
+            "k9": "Dari startup hingga enterprise, kami membangun aplikasi web dan mobile berperforma tinggi yang mendorong pertumbuhan dan memberikan pengalaman pengguna terbaik.",
+            "k10": "Klien Kami",
+            "k11": "Hubungi Kami",
+            "k12": "Proyek Selesai",
+            "k13": "Kepuasan Klien",
+            "k14": "Tahun Pengalaman",
+            "k15": "LAYANAN KAMI",
+            "k16": "Semua yang Anda Butuhkan untuk <span class=\"gradient-text\">Membangun &amp; Berkembang</span>",
+            "k17": "Layanan pengembangan end-to-end yang disesuaikan dengan kebutuhan bisnis Anda, dari konsep hingga peluncuran dan seterusnya.",
+            "k18": "Aplikasi Mobile",
+            "k19": "Aplikasi mobile native dan lintas platform untuk iOS dan Android. Pengembangan React Native, Flutter, dan Swift dengan implementasi UI yang presisi.",
+            "k20": "Aplikasi Web",
+            "k21": "Aplikasi web modern dan responsif dengan React, Next.js, dan Vue. Server-side rendering, progressive web app, dan single-page application.",
+            "k22": "Backend &amp; API",
+            "k23": "Arsitektur backend dan API RESTful/GraphQL yang skalabel. Desain database, infrastruktur cloud, dan otomasi DevOps untuk deployment yang andal.",
+            "k24": "Strategi Produk",
+            "k25": "Dari ide hingga peluncuran ke pasar. Kami membantu memvalidasi ide, menentukan MVP, menyusun roadmap, dan membangun produk yang benar-benar dibutuhkan pengguna.",
+            "k26": "DIPERCAYA OLEH",
+            "k27": "Brand yang <span class=\"gradient-text\">Mempercayai Kami</span>",
+            "k28": "Kami berkesempatan bekerja sama dengan brand-brand hebat dari berbagai industri.",
+            "k29": "Layanan Kebersihan",
+            "k30": "Makanan &amp; Camilan",
+            "k31": "Solusi Digital",
+            "k32": "Sekuritas",
+            "k33": "Spa Keluarga",
+            "k34": "PRODUK KAMI",
+            "k35": "Produk yang Kami <span class=\"gradient-text\">Bangun &amp; Kelola</span>",
+            "k36": "Perangkat lunak yang kami rancang, bangun, dan operasikan sendiri.",
+            "k37": "Produk kami",
+            "k38": "Platform manajemen umroh untuk PPIU",
+            "k39": "Keberangkatan, kesiapan jamaah, dokumen, pembayaran, dan kredit dalam satu ruang kerja. Dashboard web untuk staf travel dan aplikasi mobile untuk jamaah.",
+            "k40": "Sistem kasir untuk retail dan F&amp;B",
+            "k41": "Sistem kasir lengkap untuk usaha kecil dan menengah di Indonesia, dengan mode offline, cetak struk thermal, dan pengelolaan multi outlet.",
+            "k42": "PROSES KAMI",
+            "k43": "Cara Kami <span class=\"gradient-text\">Mewujudkan Ide</span>",
+            "k44": "Metodologi teruji yang memastikan komunikasi transparan, pengerjaan tepat waktu, dan hasil terbaik.",
+            "k45": "Riset",
+            "k46": "Desain",
+            "k47": "Pengembangan",
+            "k48": "Peluncuran",
+            "k49": "Mendalami tujuan, pengguna, dan kebutuhan Anda. Kami menetapkan ukuran keberhasilan dan ruang lingkup proyek.",
+            "k50": "Wireframe, prototipe, dan desain high-fidelity. Pengujian dengan pengguna memastikan pengalaman yang intuitif.",
+            "k51": "Sprint agile dengan demo mingguan. Kode yang rapi, pengujian menyeluruh, dan continuous integration.",
+            "k52": "Deployment, monitoring, dan dukungan berkelanjutan. Kami memastikan peluncuran yang lancar dan pertumbuhan ke depan.",
+            "k53": "TESTIMONI",
+            "k54": "Kata <span class=\"gradient-text\">Klien Kami</span>",
+            "k55": "Siap Membangun <span class=\"gradient-text\">Produk Anda Berikutnya?</span>",
+            "k56": "Mari diskusikan proyek Anda dan lihat bagaimana kami dapat membantu mewujudkan ide Anda. Konsultasi gratis, tanpa ikatan.",
+            "k57": "Nama",
+            "k58": "Detail Proyek",
+            "k59": "Kirim Pesan",
+            "k60": "Agensi pengembangan web dan mobile yang membangun produk digital yang siap berkembang. Kami mewujudkan ide menjadi kenyataan.",
+            "k61": "Tautan Cepat",
+            "k62": "Terhubung",
+            "k63": "© 2026 MDigital. Hak cipta dilindungi.",
+            "k64": "Kebijakan Privasi",
+            "k65": "Ketentuan Layanan",
+            "t1_quote": "MDigital membangun aplikasi pelanggan kami untuk iOS dan Android, aplikasi untuk cleaner, dan API di belakangnya. Pemesanan, pembayaran, dan chat di dalam aplikasi kini berjalan dalam satu sistem, dan tim ini terus mendampingi kami saat kami menambah layanan baru.",
+            "t1_cat": "Aplikasi layanan kebersihan",
+            "t2_quote": "Dari desain pertama hingga rilis di store, setiap langkahnya jelas. Build staging yang terpisah membuat kami bisa menguji setiap rilis sebelum sampai ke pelanggan. Pekerjaan rapi dan komunikasi yang jujur dari awal sampai akhir.",
+            "t2_cat": "Aplikasi spa keluarga",
+            "t3_quote": "Cepat, terstruktur, dan mudah diajak bekerja sama. Tim ini cepat memahami kebutuhan kami dan menyelesaikan pekerjaan sesuai jadwal.",
+            "t3_cat": "Makanan &amp; Camilan",
+            "t4_quote": "Mereka mengubah operasional harian kami menjadi alur digital yang sederhana untuk tim dan pelanggan kami, dan selalu cepat merespons setiap kali kami butuh perubahan.",
+            "t4_cat": "Layanan kebersihan",
+            "ph_name": "Nama lengkap",
+            "ph_email": "nama@perusahaan.com",
+            "ph_details": "Ceritakan tentang proyek Anda...",
+            "meta_title": "MDigital - Mitra Pengembangan Web &amp; Mobile",
+            "meta_desc": "MDigital adalah agensi pengembangan web dan mobile yang membangun produk digital yang siap berkembang.",
+            "menu_open": "Buka menu",
+            "menu_close": "Tutup menu",
+            "sent": "Pesan Terkirim!"
+        };
+        const I18N_EN_JS = {
+            "menu_open": "Open menu",
+            "menu_close": "Close menu",
+            "sent": "Message Sent!"
+        };
+        const i18nEls = [...document.querySelectorAll('[data-i18n]')];
+        const i18nEn = new Map(i18nEls.map(el => [el, el.innerHTML]));
+        const phEls = [...document.querySelectorAll('[data-i18n-ph]')];
+        const phEn = new Map(phEls.map(el => [el, el.placeholder]));
+        const metaDesc = document.querySelector('meta[name="description"]');
+        const metaEn = { title: document.title, desc: metaDesc.content };
+        let currentLang = 'en';
+        const t = key => currentLang === 'id' ? I18N_ID[key] : I18N_EN_JS[key];
+        const decode = html => { const el = document.createElement('textarea'); el.innerHTML = html; return el.value; };
+
+        function setLang(lang) {
+            currentLang = lang === 'id' ? 'id' : 'en';
+            const id = currentLang === 'id';
+            document.documentElement.lang = currentLang;
+            i18nEls.forEach(el => { el.innerHTML = id ? I18N_ID[el.dataset.i18n] : i18nEn.get(el); });
+            phEls.forEach(el => { el.placeholder = id ? I18N_ID[el.dataset.i18nPh] : phEn.get(el); });
+            document.title = id ? decode(I18N_ID.meta_title) : metaEn.title;
+            metaDesc.content = id ? I18N_ID.meta_desc : metaEn.desc;
+            document.querySelectorAll('.lang-switch button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === currentLang));
+            const btn = document.getElementById('mobile-menu-btn');
+            btn.setAttribute('aria-label', t(btn.getAttribute('aria-expanded') === 'true' ? 'menu_close' : 'menu_open'));
+            try { localStorage.setItem('lang', currentLang); } catch (e) {}
+        }
+
+        document.querySelectorAll('.lang-switch button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+        let savedLang = null;
+        try { savedLang = localStorage.getItem('lang'); } catch (e) {}
+        setLang(savedLang || ((navigator.language || '').toLowerCase().startsWith('id') ? 'id' : 'en'));
         
         // Navbar Scroll Effect
         const navbar = document.getElementById('navbar');
@@ -862,7 +1089,7 @@
         mobileMenuBtn.addEventListener('click', () => {
             const open = mobileMenu.classList.toggle('open');
             mobileMenuBtn.setAttribute('aria-expanded', open);
-            mobileMenuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+            mobileMenuBtn.setAttribute('aria-label', t(open ? 'menu_close' : 'menu_open'));
             const icon = mobileMenuBtn.querySelector('i, svg');
             if (open) {
                 icon.setAttribute('data-lucide', 'x');
@@ -876,7 +1103,7 @@
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('open');
                 mobileMenuBtn.setAttribute('aria-expanded', 'false');
-                mobileMenuBtn.setAttribute('aria-label', 'Open menu');
+                mobileMenuBtn.setAttribute('aria-label', t('menu_open'));
                 const icon = mobileMenuBtn.querySelector('i, svg');
                 icon.setAttribute('data-lucide', 'menu');
                 lucide.createIcons();
@@ -920,15 +1147,14 @@
             
             // Show success message
             const button = contactForm.querySelector('button[type="submit"]');
-            const originalText = button.innerHTML;
-            button.innerHTML = '<span>Message Sent!</span>';
+            const label = button.querySelector('[data-i18n]');
+            label.textContent = t('sent');
             button.disabled = true;
             
             setTimeout(() => {
-                button.innerHTML = originalText;
+                label.innerHTML = currentLang === 'id' ? I18N_ID[label.dataset.i18n] : i18nEn.get(label);
                 button.disabled = false;
                 contactForm.reset();
-                lucide.createIcons();
             }, 3000);
         });
         
