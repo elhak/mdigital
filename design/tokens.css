@@ -1,0 +1,79 @@
+/* MDigital design tokens — from the 2026-11 logo kit. Three layers: primitive > semantic > component. */
+:root {
+  /* 1. PRIMITIVE (logo kit values, do not use directly in components) */
+  --mid-950: #071428;   /* page, derived: Midnight darkened */
+  --mid-900: #0A1D3B;   /* Midnight (kit) */
+  --mid-800: #102A52;   /* raised surface */
+  --mid-700: #1B3A6B;   /* border strong */
+  --cyan-400: #2BF5E3;  /* Cyan (kit) */
+  --blue-500: #3B82F6;  /* Blue (kit) */
+  --blue-400: #6AA2FA;  /* Blue, lifted for text on dark */
+  --blue-600: #2F7BF5;  /* Light blue (kit), wordmark only */
+  --blue-700: #1D5FD1;  /* Blue, darkened for text on light */
+  --mist-100: #E8EFFA;  /* Mist (kit) */
+  --mist-400: #9FB3D1;  /* muted text on dark */
+  --slate-600: #4A5F82; /* muted text on light */
+  --white: #FFFFFF;
+
+  --font-sans: 'Sora', 'Inter', system-ui, sans-serif;  /* headings: Sora 600/700 */
+  --font-body: 'Inter', system-ui, sans-serif;          /* body: Inter 400/500 */
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace; /* keep for code mockup only */
+
+  /* spacing (4px base) */
+  --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem;
+  --space-6: 1.5rem; --space-8: 2rem; --space-12: 3rem; --space-16: 4rem; --space-24: 6rem;
+  --radius-sm: .5rem; --radius-md: .75rem; --radius-lg: 1.25rem; /* badge corner = 24% of side */
+  --gradient-brand: linear-gradient(135deg, var(--cyan-400) 0%, var(--blue-500) 100%);
+  --gradient-brand-v: linear-gradient(180deg, var(--cyan-400) 0%, var(--blue-500) 100%);
+
+  /* 2. SEMANTIC — dark theme (default; the site is dark today) */
+  --bg: var(--mid-950);
+  --surface: var(--mid-900);
+  --surface-raised: var(--mid-800);
+  --border: rgba(159,179,209,.16);
+  --border-strong: var(--mid-700);
+  --text: var(--mist-100);
+  --text-muted: var(--mist-400);
+  --accent: var(--cyan-400);          /* highlights, icons, links on dark */
+  --accent-2: var(--blue-400);        /* secondary text accent on dark */
+  --on-accent: var(--mid-900);        /* text on cyan / gradient */
+  --focus-ring: var(--cyan-400);
+  --glow: rgba(43,245,227,.25);
+
+  /* 3. COMPONENT */
+  --btn-primary-bg: var(--gradient-brand);
+  --btn-primary-text: var(--on-accent);
+  --btn-secondary-bg: rgba(232,239,250,.06);
+  --btn-secondary-border: var(--border-strong);
+  --btn-secondary-text: var(--text);
+  --card-bg: var(--surface);
+  --card-border: var(--border);
+  --card-border-hover: rgba(43,245,227,.5);
+  --nav-bg-scrolled: rgba(7,20,40,.85);
+  --icon-chip-bg: rgba(43,245,227,.10);
+  --icon-chip-fg: var(--cyan-400);
+  --logo-src: url('brand/svg/logo-horizontal-for-dark-bg.svg');
+}
+
+/* SEMANTIC — light theme */
+[data-theme="light"] {
+  --bg: var(--white);
+  --surface: var(--mist-100);
+  --surface-raised: var(--white);
+  --border: rgba(10,29,59,.14);
+  --border-strong: rgba(10,29,59,.28);
+  --text: var(--mid-900);
+  --text-muted: var(--slate-600);
+  --accent: var(--blue-700);          /* cyan fails on white: use darkened blue */
+  --accent-2: var(--blue-700);
+  --on-accent: var(--mid-900);
+  --focus-ring: var(--blue-700);
+  --glow: rgba(47,123,245,.18);
+  --btn-secondary-bg: transparent;
+  --btn-secondary-border: var(--border-strong);
+  --card-border-hover: var(--blue-500);
+  --nav-bg-scrolled: rgba(255,255,255,.88);
+  --icon-chip-bg: rgba(29,95,209,.08);
+  --icon-chip-fg: var(--blue-700);
+  --logo-src: url('brand/svg/logo-horizontal-for-light-bg.svg');
+}

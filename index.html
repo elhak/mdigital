@@ -5,11 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MDigital - Web & Mobile Development Partner</title>
     <meta name="description" content="MDigital is a web and mobile development agency that builds digital products that scale.">
-    
+    <meta name="theme-color" content="#071428">
+    <meta property="og:title" content="MDigital - Web & Mobile Development Partner">
+    <meta property="og:description" content="MDigital is a web and mobile development agency that builds digital products that scale.">
+    <meta property="og:image" content="https://mdigital.biz.id/design/brand/png/social-avatar-1080.png">
+
+    <!-- Favicons -->
+    <link rel="icon" href="design/brand/favicon/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="design/brand/favicon/favicon.ico" sizes="48x48">
+    <link rel="apple-touch-icon" href="design/brand/favicon/apple-touch-icon-180.png">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="design/tokens.css">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -23,15 +33,23 @@
             theme: {
                 extend: {
                     colors: {
-                        bg: '#0A0A0F',
-                        primary: '#1A1A2E',
-                        accent: '#6366F1',
-                        'accent-glow': '#818CF8',
-                        'gray-300': '#D1D5DB',
-                        'gray-500': '#6B7280',
+                        bg: '#071428',
+                        surface: '#0A1D3B',
+                        raised: '#102A52',
+                        accent: '#2BF5E3',
+                        'accent-glow': '#6AA2FA',
+                        brand: '#3B82F6',
+                        mist: '#E8EFFA',
+                        muted: '#9FB3D1',
+                        midnight: '#0A1D3B',
+                        // Brand neutrals: stock gray-500 fails AA on Midnight
+                        'gray-300': '#E8EFFA',
+                        'gray-400': '#9FB3D1',
+                        'gray-500': '#9FB3D1',
                     },
                     fontFamily: {
                         sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Sora', 'Inter', 'sans-serif'],
                         mono: ['JetBrains Mono', 'monospace'],
                     },
                 }
@@ -45,18 +63,28 @@
         }
         
         body {
-            background-color: #0A0A0F;
-            color: #ffffff;
-            font-family: 'Inter', system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
             overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Sora', 'Inter', sans-serif;
+            letter-spacing: -0.01em;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--focus-ring);
+            outline-offset: 2px;
         }
         
         /* Glass Effect */
         .glass {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(10, 29, 59, 0.55);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border);
         }
         
         .glass-nav {
@@ -65,19 +93,10 @@
         }
         
         .glass-nav.scrolled {
-            background: rgba(10, 10, 15, 0.8);
+            background: var(--nav-bg-scrolled);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        
-        /* Glow Effects */
-        .glow-accent {
-            box-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
-        }
-        
-        .glow-accent-hover:hover {
-            box-shadow: 0 0 40px rgba(99, 102, 241, 0.5);
+            border-bottom: 1px solid var(--border);
         }
         
         /* Card Hover Effects */
@@ -86,14 +105,14 @@
         }
         
         .card-hover:hover {
-            transform: translateY(-8px);
-            border-color: rgba(99, 102, 241, 0.5);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(99, 102, 241, 0.2);
+            transform: translateY(-4px);
+            border-color: var(--card-border-hover);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(43, 245, 227, 0.12);
         }
         
         /* Gradient Text */
         .gradient-text {
-            background: linear-gradient(135deg, #ffffff 0%, #818CF8 100%);
+            background: var(--gradient-brand);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -101,40 +120,46 @@
         
         /* Code Editor Mockup */
         .code-editor {
-            background: linear-gradient(180deg, #1A1A2E 0%, #0F0F1A 100%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(180deg, var(--mid-900) 0%, var(--mid-950) 100%);
+            border: 1px solid var(--border-strong);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
         
         .code-line {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
         }
         
         /* Process Timeline */
         .timeline-line {
-            background: linear-gradient(90deg, #6366F1 0%, #818CF8 50%, rgba(255,255,255,0.1) 100%);
+            background: linear-gradient(90deg, var(--cyan-400) 0%, var(--blue-500) 60%, rgba(159, 179, 209, 0.12) 100%);
         }
         
         /* Button Styles */
         .btn-primary {
-            background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+            background: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
             transition: all 0.3s ease;
         }
         
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+            box-shadow: 0 10px 30px var(--glow);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            transform: none;
         }
         
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--btn-secondary-bg);
+            border: 1px solid var(--btn-secondary-border);
+            color: var(--btn-secondary-text);
             transition: all 0.3s ease;
         }
         
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
+            border-color: var(--accent);
         }
         
         /* Background Gradient Orb */
@@ -149,11 +174,13 @@
         /* Mobile Menu */
         .mobile-menu {
             transform: translateX(100%);
-            transition: transform 0.3s ease;
+            visibility: hidden;
+            transition: transform 0.3s ease, visibility 0.3s;
         }
         
         .mobile-menu.open {
             transform: translateX(0);
+            visibility: visible;
         }
         
         /* Smooth reveal animations */
@@ -190,25 +217,24 @@
         }
         
         ::-webkit-scrollbar-track {
-            background: #0A0A0F;
+            background: var(--bg);
         }
         
         ::-webkit-scrollbar-thumb {
-            background: #1A1A2E;
+            background: var(--mid-700);
             border-radius: 4px;
         }
         
         ::-webkit-scrollbar-thumb:hover {
-            background: #6366F1;
+            background: var(--cyan-400);
         }
     </style>
 </head>
 <body class="antialiased">
     <!-- Background Effects -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <div class="gradient-orb w-96 h-96 bg-accent/20 top-0 left-1/4"></div>
-        <div class="gradient-orb w-80 h-80 bg-accent-glow/10 top-1/3 right-1/4"></div>
-        <div class="gradient-orb w-72 h-72 bg-accent/15 bottom-1/4 left-1/3"></div>
+        <div class="gradient-orb w-96 h-96 bg-accent/40 top-0 left-1/4"></div>
+        <div class="gradient-orb w-80 h-80 bg-brand/40 top-1/3 right-1/4"></div>
     </div>
 
     <!-- Navigation -->
@@ -216,11 +242,8 @@
         <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
             <div class="flex items-center justify-between h-16 lg:h-20">
                 <!-- Logo -->
-                <a href="#" class="flex items-center space-x-2">
-                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-accent-glow flex items-center justify-center">
-                        <i data-lucide="code-2" class="w-5 h-5 text-white"></i>
-                    </div>
-                    <span class="text-xl font-bold text-white">MDigital</span>
+                <a href="#" class="flex items-center" aria-label="MDigital home">
+                    <img src="design/brand/svg/logo-horizontal-for-dark-bg.svg" alt="MDigital" class="h-8 lg:h-10 w-auto">
                 </a>
                 
                 <!-- Desktop Navigation -->
@@ -233,14 +256,14 @@
                 
                 <!-- CTA Button -->
                 <div class="hidden md:block">
-                    <a href="#contact" class="btn-primary px-5 py-2.5 rounded-lg text-sm font-semibold text-white inline-flex items-center space-x-2">
+                    <a href="#contact" class="btn-primary px-5 py-2.5 rounded-lg text-sm font-semibold text-midnight inline-flex items-center space-x-2">
                         <span>Start Project</span>
                         <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
                 </div>
                 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300 hover:text-white transition-colors">
+                <button id="mobile-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden p-2 text-gray-300 hover:text-white transition-colors">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
             </div>
@@ -253,7 +276,7 @@
                 <a href="#portfolio" class="mobile-link text-2xl font-medium text-white hover:text-accent transition-colors">Work</a>
                 <a href="#process" class="mobile-link text-2xl font-medium text-white hover:text-accent transition-colors">Process</a>
                 <a href="#contact" class="mobile-link text-2xl font-medium text-white hover:text-accent transition-colors">Contact</a>
-                <a href="#contact" class="btn-primary px-8 py-3 rounded-lg text-lg font-semibold text-white mt-4">
+                <a href="#contact" class="btn-primary px-8 py-3 rounded-lg text-lg font-semibold text-midnight mt-4">
                     Start Project
                 </a>
             </div>
@@ -284,7 +307,7 @@
                     
                     <!-- CTA Buttons -->
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#portfolio" class="btn-primary px-8 py-4 rounded-xl text-base font-semibold text-white inline-flex items-center justify-center space-x-2">
+                        <a href="#portfolio" class="btn-primary px-8 py-4 rounded-xl text-base font-semibold text-midnight inline-flex items-center justify-center space-x-2">
                             <span>View Our Work</span>
                             <i data-lucide="arrow-down-right" class="w-5 h-5"></i>
                         </a>
@@ -328,59 +351,59 @@
                         <!-- Editor Content -->
                         <div class="p-6 space-y-3 text-sm">
                             <div class="code-line flex">
-                                <span class="text-gray-600 w-8 select-none">1</span>
-                                <span><span class="text-purple-400">import</span> <span class="text-white">React</span> <span class="text-purple-400">from</span> <span class="text-green-400">'react'</span>;</span>
+                                <span class="text-gray-500 w-8 select-none">1</span>
+                                <span><span class="text-accent-glow">import</span> <span class="text-white">React</span> <span class="text-accent-glow">from</span> <span class="text-green-400">'react'</span>;</span>
                             </div>
                             <div class="code-line flex">
-                                <span class="text-gray-600 w-8 select-none">2</span>
-                                <span><span class="text-purple-400">import</span> { <span class="text-white">motion</span> } <span class="text-purple-400">from</span> <span class="text-green-400">'framer-motion'</span>;</span>
+                                <span class="text-gray-500 w-8 select-none">2</span>
+                                <span><span class="text-accent-glow">import</span> { <span class="text-white">motion</span> } <span class="text-accent-glow">from</span> <span class="text-green-400">'framer-motion'</span>;</span>
                             </div>
                             <div class="code-line flex">
-                                <span class="text-gray-600 w-8 select-none">3</span>
+                                <span class="text-gray-500 w-8 select-none">3</span>
                                 <span></span>
                             </div>
                             <div class="code-line flex">
-                                <span class="text-gray-600 w-8 select-none">4</span>
-                                <span><span class="text-purple-400">export const</span> <span class="text-yellow-400">Hero</span> = () => {</span>
+                                <span class="text-gray-500 w-8 select-none">4</span>
+                                <span><span class="text-accent-glow">export const</span> <span class="text-mist">Hero</span> = () => {</span>
                             </div>
                             <div class="code-line flex">
-                                <span class="text-gray-600 w-8 select-none">5</span>
-                                <span class="pl-4"><span class="text-purple-400">return</span> (</span>
+                                <span class="text-gray-500 w-8 select-none">5</span>
+                                <span class="pl-4"><span class="text-accent-glow">return</span> (</span>
                             </div>
                             <div class="code-line flex">
-                                <span class="text-gray-600 w-8 select-none">6</span>
-                                <span class="pl-8"><span class="text-gray-400">&lt;</span><span class="text-blue-400">motion.div</span></span>
+                                <span class="text-gray-500 w-8 select-none">6</span>
+                                <span class="pl-8"><span class="text-gray-400">&lt;</span><span class="text-brand">motion.div</span></span>
                             </div>
                             <div class="code-line flex">
-                                <span class="text-gray-600 w-8 select-none">7</span>
-                                <span class="pl-12"><span class="text-cyan-400">initial</span>={{ <span class="text-white">opacity</span>: <span class="text-orange-400">0</span> }}</span>
+                                <span class="text-gray-500 w-8 select-none">7</span>
+                                <span class="pl-12"><span class="text-accent">initial</span>={{ <span class="text-white">opacity</span>: <span class="text-accent">0</span> }}</span>
                             </div>
                             <div class="code-line flex">
-                                <span class="text-gray-600 w-8 select-none">8</span>
-                                <span class="pl-12"><span class="text-cyan-400">animate</span>={{ <span class="text-white">opacity</span>: <span class="text-orange-400">1</span> }}</span>
+                                <span class="text-gray-500 w-8 select-none">8</span>
+                                <span class="pl-12"><span class="text-accent">animate</span>={{ <span class="text-white">opacity</span>: <span class="text-accent">1</span> }}</span>
                             </div>
                             <div class="code-line flex">
-                                <span class="text-gray-600 w-8 select-none">9</span>
-                                <span class="pl-12"><span class="text-cyan-400">className</span>=<span class="text-green-400">"hero-container"</span></span>
+                                <span class="text-gray-500 w-8 select-none">9</span>
+                                <span class="pl-12"><span class="text-accent">className</span>=<span class="text-green-400">"hero-container"</span></span>
                             </div>
                             <div class="code-line flex">
-                                <span class="text-gray-600 w-8 select-none">10</span>
+                                <span class="text-gray-500 w-8 select-none">10</span>
                                 <span class="pl-8"><span class="text-gray-400">&gt;</span></span>
                             </div>
                             <div class="code-line flex">
-                                <span class="text-gray-600 w-8 select-none">11</span>
-                                <span class="pl-12"><span class="text-gray-400">&lt;</span><span class="text-blue-400">h1</span><span class="text-gray-400">&gt;</span><span class="text-white">Digital Excellence</span><span class="text-gray-400">&lt;/</span><span class="text-blue-400">h1</span><span class="text-gray-400">&gt;</span></span>
+                                <span class="text-gray-500 w-8 select-none">11</span>
+                                <span class="pl-12"><span class="text-gray-400">&lt;</span><span class="text-brand">h1</span><span class="text-gray-400">&gt;</span><span class="text-white">Digital Excellence</span><span class="text-gray-400">&lt;/</span><span class="text-brand">h1</span><span class="text-gray-400">&gt;</span></span>
                             </div>
                             <div class="code-line flex">
-                                <span class="text-gray-600 w-8 select-none">12</span>
-                                <span class="pl-8"><span class="text-gray-400">&lt;/</span><span class="text-blue-400">motion.div</span><span class="text-gray-400">&gt;</span></span>
+                                <span class="text-gray-500 w-8 select-none">12</span>
+                                <span class="pl-8"><span class="text-gray-400">&lt;/</span><span class="text-brand">motion.div</span><span class="text-gray-400">&gt;</span></span>
                             </div>
                             <div class="code-line flex">
-                                <span class="text-gray-600 w-8 select-none">13</span>
+                                <span class="text-gray-500 w-8 select-none">13</span>
                                 <span class="pl-4">);</span>
                             </div>
                             <div class="code-line flex">
-                                <span class="text-gray-600 w-8 select-none">14</span>
+                                <span class="text-gray-500 w-8 select-none">14</span>
                                 <span>};</span>
                             </div>
                         </div>
@@ -603,9 +626,9 @@
                 
                 <!-- Project 2 -->
                 <div class="glass card-hover rounded-2xl overflow-hidden reveal delay-100">
-                    <div class="aspect-video bg-gradient-to-br from-green-500/10 to-emerald-500/10 flex items-center justify-center">
+                    <div class="aspect-video bg-gradient-to-br from-brand/20 to-accent/10 flex items-center justify-center">
                         <div class="text-center">
-                            <i data-lucide="heart-pulse" class="w-16 h-16 text-green-500/50 mx-auto mb-2"></i>
+                            <i data-lucide="heart-pulse" class="w-16 h-16 text-brand/60 mx-auto mb-2"></i>
                             <span class="text-gray-500 font-mono text-sm">Health & Fitness App</span>
                         </div>
                     </div>
@@ -628,9 +651,9 @@
                 
                 <!-- Project 3 -->
                 <div class="glass card-hover rounded-2xl overflow-hidden reveal delay-200">
-                    <div class="aspect-video bg-gradient-to-br from-orange-500/10 to-red-500/10 flex items-center justify-center">
+                    <div class="aspect-video bg-gradient-to-br from-accent-glow/15 to-brand/10 flex items-center justify-center">
                         <div class="text-center">
-                            <i data-lucide="bar-chart-3" class="w-16 h-16 text-orange-500/50 mx-auto mb-2"></i>
+                            <i data-lucide="bar-chart-3" class="w-16 h-16 text-accent-glow/60 mx-auto mb-2"></i>
                             <span class="text-gray-500 font-mono text-sm">Analytics Dashboard</span>
                         </div>
                     </div>
@@ -681,7 +704,7 @@
                     </p>
                     <div class="flex items-center space-x-4">
                         <div class="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-accent-glow flex items-center justify-center">
-                            <span class="text-white font-bold">SK</span>
+                            <span class="text-midnight font-bold">SK</span>
                         </div>
                         <div>
                             <div class="font-semibold text-white">Sarah Kim</div>
@@ -703,8 +726,8 @@
                         "Working with MDigital was seamless from start to finish. They delivered on time, communicated transparently, and the quality of their work speaks for itself. Highly recommended!"
                     </p>
                     <div class="flex items-center space-x-4">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-emerald-400 flex items-center justify-center">
-                            <span class="text-white font-bold">MR</span>
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-brand to-accent flex items-center justify-center">
+                            <span class="text-midnight font-bold">MR</span>
                         </div>
                         <div>
                             <div class="font-semibold text-white">Michael Rodriguez</div>
@@ -729,7 +752,7 @@
                             Let's discuss your project and see how we can help bring your ideas to life. Free consultation, no strings attached.
                         </p>
                         <div class="flex flex-col sm:flex-row gap-4">
-                            <a href="mailto:hello@mdigital.dev" class="btn-primary px-8 py-4 rounded-xl text-base font-semibold text-white inline-flex items-center justify-center space-x-2">
+                            <a href="mailto:hello@mdigital.dev" class="btn-primary px-8 py-4 rounded-xl text-base font-semibold text-midnight inline-flex items-center justify-center space-x-2">
                                 <i data-lucide="mail" class="w-5 h-5"></i>
                                 <span>hello@mdigital.dev</span>
                             </a>
@@ -751,7 +774,7 @@
                                 <label class="block text-sm font-medium text-gray-300 mb-2">Project Details</label>
                                 <textarea rows="4" placeholder="Tell us about your project..." class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-accent transition-colors resize-none"></textarea>
                             </div>
-                            <button type="submit" class="btn-primary w-full px-6 py-3 rounded-lg text-base font-semibold text-white inline-flex items-center justify-center space-x-2">
+                            <button type="submit" class="btn-primary w-full px-6 py-3 rounded-lg text-base font-semibold text-midnight inline-flex items-center justify-center space-x-2">
                                 <span>Send Message</span>
                                 <i data-lucide="send" class="w-4 h-4"></i>
                             </button>
@@ -769,11 +792,8 @@
                 <div class="grid md:grid-cols-4 gap-8 mb-12">
                     <!-- Logo & Description -->
                     <div class="md:col-span-2">
-                        <a href="#" class="flex items-center space-x-2 mb-4">
-                            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-accent-glow flex items-center justify-center">
-                                <i data-lucide="code-2" class="w-5 h-5 text-white"></i>
-                            </div>
-                            <span class="text-xl font-bold text-white">MDigital</span>
+                        <a href="#" class="inline-flex items-center mb-4" aria-label="MDigital home">
+                            <img src="design/brand/svg/logo-horizontal-for-dark-bg.svg" alt="MDigital" class="h-8 w-auto">
                         </a>
                         <p class="text-gray-400 text-sm max-w-sm">
                             Web and mobile development agency building digital products that scale. We turn ideas into reality.
@@ -852,9 +872,11 @@
         const mobileLinks = document.querySelectorAll('.mobile-link');
         
         mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('open');
-            const icon = mobileMenuBtn.querySelector('i');
-            if (mobileMenu.classList.contains('open')) {
+            const open = mobileMenu.classList.toggle('open');
+            mobileMenuBtn.setAttribute('aria-expanded', open);
+            mobileMenuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+            const icon = mobileMenuBtn.querySelector('i, svg');
+            if (open) {
                 icon.setAttribute('data-lucide', 'x');
             } else {
                 icon.setAttribute('data-lucide', 'menu');
@@ -865,7 +887,9 @@
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('open');
-                const icon = mobileMenuBtn.querySelector('i');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                mobileMenuBtn.setAttribute('aria-label', 'Open menu');
+                const icon = mobileMenuBtn.querySelector('i, svg');
                 icon.setAttribute('data-lucide', 'menu');
                 lucide.createIcons();
             });
