@@ -249,6 +249,7 @@
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#services" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Services</a>
+                    <a href="#products" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Products</a>
                     <a href="#portfolio" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Work</a>
                     <a href="#process" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Process</a>
                     <a href="#contact" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Contact</a>
@@ -273,6 +274,7 @@
         <div id="mobile-menu" class="mobile-menu fixed inset-0 top-16 bg-bg/95 backdrop-blur-xl md:hidden z-40">
             <div class="flex flex-col items-center justify-center h-full space-y-8">
                 <a href="#services" class="mobile-link text-2xl font-medium text-white hover:text-accent transition-colors">Services</a>
+                <a href="#products" class="mobile-link text-2xl font-medium text-white hover:text-accent transition-colors">Products</a>
                 <a href="#portfolio" class="mobile-link text-2xl font-medium text-white hover:text-accent transition-colors">Work</a>
                 <a href="#process" class="mobile-link text-2xl font-medium text-white hover:text-accent transition-colors">Process</a>
                 <a href="#contact" class="mobile-link text-2xl font-medium text-white hover:text-accent transition-colors">Contact</a>
@@ -583,6 +585,73 @@
         </div>
     </section>
 
+    <!-- Products Section -->
+    <section id="products" class="relative py-24 lg:py-32 z-10">
+        <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="inline-block text-accent font-mono text-sm mb-4">OUR PRODUCTS</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+                    Products We <span class="gradient-text">Build & Run</span>
+                </h2>
+                <p class="text-gray-400 text-lg">
+                    Software we design, build and operate ourselves.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                <!-- AjwaHub -->
+                <div class="glass card-hover rounded-2xl p-8 reveal">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center">
+                            <i data-lucide="plane" class="w-7 h-7 text-accent"></i>
+                        </div>
+                        <span class="px-3 py-1 rounded-full border border-accent/30 text-xs font-mono text-accent">Our product</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-1">AjwaHub</h3>
+                    <div class="text-sm text-gray-500 font-mono mb-3">Umrah management platform for PPIU agencies</div>
+                    <p class="text-gray-400 leading-relaxed mb-6">
+                        Departures, pilgrim readiness, documents, payments and credits in one workspace. A web dashboard for travel-agency staff and a mobile app for pilgrims.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-2 py-1 rounded bg-white/5 text-xs font-mono text-gray-300">Go</span>
+                            <span class="px-2 py-1 rounded bg-white/5 text-xs font-mono text-gray-300">React</span>
+                            <span class="px-2 py-1 rounded bg-white/5 text-xs font-mono text-gray-300">Flutter</span>
+                            <span class="px-2 py-1 rounded bg-white/5 text-xs font-mono text-gray-300">PostgreSQL</span>
+                    </div>
+                    <a href="https://ajwahub.my.id/" target="_blank" rel="noopener" class="inline-flex items-center text-accent hover:text-accent-glow transition-colors text-sm font-medium">
+                        <span>ajwahub.my.id</span>
+                        <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- JayaPOS -->
+                <div class="glass card-hover rounded-2xl p-8 reveal delay-100">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center">
+                            <i data-lucide="store" class="w-7 h-7 text-accent"></i>
+                        </div>
+                        <span class="px-3 py-1 rounded-full border border-accent/30 text-xs font-mono text-accent">Our product</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-1">JayaPOS</h3>
+                    <div class="text-sm text-gray-500 font-mono mb-3">Point of sale for retail and F&amp;B</div>
+                    <p class="text-gray-400 leading-relaxed mb-6">
+                        A complete cashier system for small and medium businesses in Indonesia, with offline mode, thermal receipt printing and multi-outlet management.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-2 py-1 rounded bg-white/5 text-xs font-mono text-gray-300">Node.js</span>
+                            <span class="px-2 py-1 rounded bg-white/5 text-xs font-mono text-gray-300">Flutter</span>
+                            <span class="px-2 py-1 rounded bg-white/5 text-xs font-mono text-gray-300">PostgreSQL</span>
+                    </div>
+                    <a href="https://jayapos.biz.id/" target="_blank" rel="noopener" class="inline-flex items-center text-accent hover:text-accent-glow transition-colors text-sm font-medium">
+                        <span>jayapos.biz.id</span>
+                        <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Portfolio Section -->
     <section id="portfolio" class="relative py-24 lg:py-32 z-10">
         <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
@@ -805,6 +874,7 @@
                         <h4 class="text-white font-semibold mb-4">Quick Links</h4>
                         <ul class="space-y-2">
                             <li><a href="#services" class="text-gray-400 hover:text-white transition-colors text-sm">Services</a></li>
+                            <li><a href="#products" class="text-gray-400 hover:text-white transition-colors text-sm">Products</a></li>
                             <li><a href="#portfolio" class="text-gray-400 hover:text-white transition-colors text-sm">Work</a></li>
                             <li><a href="#process" class="text-gray-400 hover:text-white transition-colors text-sm">Process</a></li>
                             <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors text-sm">Contact</a></li>
